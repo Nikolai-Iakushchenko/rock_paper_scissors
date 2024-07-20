@@ -1,10 +1,15 @@
-import styles from "./Game.module.css"
+import styles from "./Game.module.css";
+import BettingPositions from "../BettingPositions/BettingPositions.tsx";
+import MessagePanel from "../MessagePanel/MessagePanel.tsx";
+import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 
 const Game = () => {
   return (
-    <div className={styles.game}>
-      Game
-    </div>
+    <main className={styles.game}>
+      <MessagePanel />
+      <BettingPositions />
+      <ControlPanel />
+    </main>
   );
 };
 
