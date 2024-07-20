@@ -1,6 +1,15 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   text-transform: uppercase;
+}
+
+.root {
+  height: 100%;
 }
