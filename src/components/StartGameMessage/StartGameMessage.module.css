@@ -1,5 +1,4 @@
 .startGameMessage {
-  color: #C0A375;
+  color: var(--golden);
   align-self: end;
-  
 }
