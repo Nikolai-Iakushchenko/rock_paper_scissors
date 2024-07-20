@@ -18,3 +18,7 @@
   background-color: var(--dark-red);
   color: var(--light-red);
 }
+
+.winner {
+  border-width: 2px;
+}
