@@ -18,9 +18,24 @@ function App() {
       <Game>
         <MessagePanel></MessagePanel>
         <BettingPositionList>
-          <BettingPosition label={"rock"} theme={"blue"} winner={false} />
-          <BettingPosition label={"paper"} theme={"green"} winner={true} />
-          <BettingPosition label={"scissors"} theme={"red"} winner={false} />
+          <BettingPosition
+            label={"rock"}
+            theme={"blue"}
+            winner={false}
+            bet={500}
+          />
+          <BettingPosition
+            label={"paper"}
+            theme={"green"}
+            winner={true}
+            bet={500}
+          />
+          <BettingPosition
+            label={"scissors"}
+            theme={"red"}
+            winner={false}
+            bet={0}
+          />
         </BettingPositionList>
         <ControlPanel />
       </Game>
