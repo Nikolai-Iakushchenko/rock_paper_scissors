@@ -21,8 +21,8 @@ const BettingPosition = ({
 
   return (
     <div className={bettingPositionClass}>
-      <div>{bet !== 0 && <Bet bet={bet} />}</div>
-      <div>{label}</div>
+      <div className={styles.betArea}>{bet !== 0 && <Bet bet={bet} />}</div>
+      <div className={styles.label}>{label}</div>
     </div>
   );
 };

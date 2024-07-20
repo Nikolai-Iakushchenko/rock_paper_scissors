@@ -25,3 +25,12 @@
 .winner {
   border-width: 3px;
 }
+
+.betArea {
+  display: grid;
+  align-items: center;
+}
+
+.label {
+  font-weight: bold;
+}
