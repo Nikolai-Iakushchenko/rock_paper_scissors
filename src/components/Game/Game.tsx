@@ -1,16 +1,12 @@
 import styles from "./Game.module.css";
-import BettingPositions from "../BettingPositions/BettingPositions.tsx";
-import MessagePanel from "../MessagePanel/MessagePanel.tsx";
-import ControlPanel from "../ControlPanel/ControlPanel.tsx";
+import { ReactElement } from "react";
 
-const Game = () => {
-  return (
-    <main className={styles.game}>
-      <MessagePanel></MessagePanel>
-      <BettingPositions />
-      <ControlPanel />
-    </main>
-  );
+interface GameProps {
+  children: ReactElement | ReactElement[];
+}
+
+const Game = ({ children }: GameProps) => {
+  return <main className={styles.game}>{children}</main>;
 };
 
 export default Game;
