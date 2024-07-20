@@ -1,5 +1,6 @@
 .game {
-  /*height: 96vh;*/
+  display: grid;
+  grid-template-rows: 40% 30% 30%;
   background-color: #404040;
   color: white;
 }

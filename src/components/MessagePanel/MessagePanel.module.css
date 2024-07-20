@@ -1,6 +1,5 @@
 .messagePanel {
   display: grid;
   justify-content: center;
-  height: 40%;
   padding: 1rem;
 }
