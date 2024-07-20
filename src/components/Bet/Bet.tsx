@@ -1,7 +1,7 @@
 import styles from "./Bet.module.css";
 
-const Bet = () => {
-  return <div className={styles.bet}>500</div>;
+const Bet = ({ bet = 0 }) => {
+  return <div className={styles.bet}>{bet}</div>;
 };
 
 export default Bet;

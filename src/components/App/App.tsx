@@ -28,7 +28,7 @@ function App() {
             label={"paper"}
             theme={"green"}
             winner={true}
-            bet={500}
+            bet={50000}
           />
           <BettingPosition
             label={"scissors"}
