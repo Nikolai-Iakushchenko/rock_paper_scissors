@@ -1,10 +1,5 @@
 import styles from "./BettingPosition.module.css";
-//
-// export type Theme = {
-//   blue: "blue";
-//   green: "green";
-//   red: "red";
-// };
+import cn from "classnames";
 
 interface BettingPositionProps {
   label: string;
@@ -17,9 +12,14 @@ const BettingPosition = ({
   theme = "blue",
   winner = false,
 }: BettingPositionProps) => {
+  const bettingPositionClass = cn(styles.bettingPosition, styles[theme], {
+    [styles.winner]: winner,
+  });
+
   return (
-    <div className={`${styles.bettingPosition} ${styles[theme]} ${winner}`}>
-      {label}
+    <div className={bettingPositionClass}>
+      <div className={"bet"}></div>
+      <div>{label}</div>
     </div>
   );
 };

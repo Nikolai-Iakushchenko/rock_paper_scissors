@@ -1,4 +1,7 @@
 .bettingPosition {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-content: center;
   border-radius: 4px;
   padding: 1em;
   border: 1px solid;
@@ -20,5 +23,5 @@
 }
 
 .winner {
-  border-width: 2px;
+  border-width: 3px;
 }

@@ -11,9 +11,9 @@ function App() {
   return (
     <div className={styles.app}>
       <InfoPanel>
-        <InfoItem label={"balance"} value={1000} />
-        <InfoItem label={"bet"} value={100} />
-        <InfoItem label={"win"} value={1} />
+        <InfoItem label={"balance"} value={5000} />
+        <InfoItem label={"bet"} value={500} />
+        <InfoItem label={"win"} value={500} />
       </InfoPanel>
       <Game>
         <MessagePanel></MessagePanel>
