@@ -1,11 +1,11 @@
 import styles from "./App.module.css";
-import ScorePanel from "../ScorePanel/ScorePanel.tsx";
+import InfoPanel from "../InfoPanel/InfoPanel.tsx";
 import Game from "../Game/Game.tsx";
 
 function App() {
   return (
     <div className={styles.app}>
-      <ScorePanel />
+      <InfoPanel />
       <Game />
     </div>
   );
