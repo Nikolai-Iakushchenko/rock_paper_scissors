@@ -1,7 +1,7 @@
 import styles from "./InfoPanel.module.css";
 
-const InfoPanel = () => {
-  return <div className={styles.infoPanel}>ScorePanel</div>;
+const InfoPanel = ({ children }) => {
+  return <div className={styles.infoPanel}>{children}</div>;
 };
 
 export default InfoPanel;

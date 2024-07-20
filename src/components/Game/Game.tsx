@@ -6,7 +6,7 @@ import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 const Game = () => {
   return (
     <main className={styles.game}>
-      <MessagePanel />
+      <MessagePanel></MessagePanel>
       <BettingPositions />
       <ControlPanel />
     </main>
