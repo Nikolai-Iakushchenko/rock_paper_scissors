@@ -1,4 +1,10 @@
 .infoPanel {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5em;
   background-color: black;
   color: white;
+  padding-block: 0.3em;
 }

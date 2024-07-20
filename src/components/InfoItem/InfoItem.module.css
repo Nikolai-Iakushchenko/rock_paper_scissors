@@ -1,3 +1,11 @@
 .infoItem {
   color: var(--golden);
 }
+
+.label {
+  color: var(--golden)
+}
+
+.value {
+  color: white;
+}

@@ -7,9 +7,9 @@ function App() {
   return (
     <div className={styles.app}>
       <InfoPanel>
-        <InfoItem label={"balance"} value={"XXXX"} />
-        <InfoItem label={"balance"} value={"XXXX"} />
-        <InfoItem label={"balance"} value={"XXXX"} />
+        <InfoItem label={"balance"} value={1000} />
+        <InfoItem label={"balance"} value={100} />
+        <InfoItem label={"balance"} value={1} />
       </InfoPanel>
       <Game />
     </div>
