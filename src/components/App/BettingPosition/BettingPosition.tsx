@@ -1,6 +1,7 @@
 import styles from "./BettingPosition.module.css";
 import cn from "classnames";
 import Bet from "../../Bet/Bet.tsx";
+import { BettingOption } from "../../BettingPositions/BettingPositionList.tsx";
 // import { BETTING_POSITION_THEME } from "../../Game/Game.tsx";
 
 // import type { Theme } from "../../Game/Game.tsx";
@@ -13,7 +14,7 @@ export enum BettingPositionTheme {
 }
 
 interface BettingPositionProps {
-  label: string;
+  label: BettingOption;
   winner: boolean;
   bet: number;
   theme: BettingPositionTheme;
@@ -21,7 +22,7 @@ interface BettingPositionProps {
 }
 
 const BettingPosition = ({
-  label = "bet",
+  label,
   theme = BettingPositionTheme.BLUE,
   winner = false,
   bet = 0,
@@ -31,7 +32,8 @@ const BettingPosition = ({
     [styles.winner]: winner,
   });
 
-  function handleClick(label: BettingPositionProps["label"]) {
+  // function handleClick(label: BettingPositionProps["label"]) {
+  function handleClick(label: BettingOption) {
     placeBet(label);
   }
 

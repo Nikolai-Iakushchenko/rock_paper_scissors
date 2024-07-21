@@ -21,12 +21,17 @@ type BettingPositions = {
 };
 
 const BettingPositionList = () => {
-  const [bettingPositions, setBettingPositions] = useState<BettingPositions>(
-    {},
+  const [bettingPositions, setBettingPositions] = useState(
+    {} as BettingPositions,
   );
 
   function placeBet(betOption: BettingOption) {
-    setBettingPositions({ [betOption]: 500 });
+    setBettingPositions((state) => {
+      if (state[betOption]) {
+        return { ...state, [betOption]: state[betOption] + 500 };
+      }
+      return { ...state, [betOption]: 500 };
+    });
   }
 
   return (
