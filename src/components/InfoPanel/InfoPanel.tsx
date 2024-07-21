@@ -2,14 +2,14 @@ import styles from "./InfoPanel.module.css";
 // import type { ReactElement } from "react";
 import InfoItem from "../InfoItem/InfoItem.tsx";
 
-// interface InfoPanelProps {
-//   // children: ReactElement | ReactElement[];
-// }
+interface InfoPanelProps {
+  playersBalance: number;
+}
 
-const InfoPanel = () => {
+const InfoPanel = ({ playersBalance }: InfoPanelProps) => {
   return (
     <div className={styles.infoPanel}>
-      <InfoItem label={"balance"} value={5000} />
+      <InfoItem label={"balance"} value={playersBalance} />
       <InfoItem label={"bet"} value={500} />
       <InfoItem label={"win"} value={500} />
     </div>
