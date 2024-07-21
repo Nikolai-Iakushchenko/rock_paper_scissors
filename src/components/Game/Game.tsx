@@ -4,6 +4,7 @@ import MessagePanel from "../MessagePanel/MessagePanel.tsx";
 import BettingPositionList from "../BettingPositions/BettingPositionList.tsx";
 import BettingPosition from "../App/BettingPosition/BettingPosition.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
+import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
 
 // interface GameProps {
 //   // children: ReactElement | ReactElement[];
@@ -33,7 +34,9 @@ const Game = () => {
           bet={0}
         />
       </BettingPositionList>
-      <ControlPanel />
+      <ControlPanel>
+        <BettingDoneButton />
+      </ControlPanel>
     </main>
   );
 };

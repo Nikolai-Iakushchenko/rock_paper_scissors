@@ -2,12 +2,16 @@ html {
   height: 100%;
 }
 
+body, button {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 body {
   height: 100%;
   margin: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  text-transform: uppercase;
 }
 
 .root {
@@ -16,6 +20,7 @@ body {
 
 /*Variables*/
 :root {
+  --black: #070707;
   --golden: #D4B37F;
   --blue: #225FFF;
   --dark-blue: #211F4F;

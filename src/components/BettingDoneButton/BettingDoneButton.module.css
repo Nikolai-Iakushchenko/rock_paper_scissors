@@ -1,0 +1,7 @@
+.bettingDoneButton {
+  padding: 2em 5em;
+  border: 0.2em solid var(--golden);
+  border-radius: 3em;
+  color: var(--golden);
+  background-color: var(--black);
+}

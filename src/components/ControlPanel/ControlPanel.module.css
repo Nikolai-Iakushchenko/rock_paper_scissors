@@ -1,4 +1,7 @@
 .controlPanel {
-  height: 30%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  /*height: 30%;*/
   padding: 1rem;
 }
