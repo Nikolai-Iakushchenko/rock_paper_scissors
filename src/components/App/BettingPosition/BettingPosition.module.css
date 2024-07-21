@@ -2,8 +2,9 @@
   display: grid;
   grid-template-rows: 1fr auto;
   justify-content: center;
-  height: 60%;
-  min-height: 4em;
+  /*height: 60%;*/
+  height: 100%;
+  /*min-height: 4em;*/
   aspect-ratio: 3 / 2;
   /*min-width: 8em;*/
   /*width: 100%;*/
