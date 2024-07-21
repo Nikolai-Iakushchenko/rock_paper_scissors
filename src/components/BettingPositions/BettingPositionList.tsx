@@ -4,9 +4,7 @@ import BettingPosition, {
   BettingPositionTheme,
 } from "../App/BettingPosition/BettingPosition.tsx";
 
-// interface BettingPositionListProps {
-//   // children: ReactElement | ReactElement[];
-// }
+const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
 
 export enum BettingOption {
   ROCK = "rock",
@@ -30,7 +28,10 @@ const BettingPositionList = () => {
       if (state[betOption]) {
         return { ...state, [betOption]: state[betOption] + 500 };
       }
-      return { ...state, [betOption]: 500 };
+      if (Object.keys(state).length < MAX_NUMBER_OF_BETTING_POSITIONS) {
+        return { ...state, [betOption]: 500 };
+      }
+      return state;
     });
   }
 
