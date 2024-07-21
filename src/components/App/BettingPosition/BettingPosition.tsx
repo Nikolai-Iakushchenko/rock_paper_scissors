@@ -17,6 +17,7 @@ interface BettingPositionProps {
   winner: boolean;
   bet: number;
   theme: BettingPositionTheme;
+  placeBet: (label: BettingPositionProps["label"]) => void;
 }
 
 const BettingPosition = ({
@@ -24,13 +25,18 @@ const BettingPosition = ({
   theme = BettingPositionTheme.BLUE,
   winner = false,
   bet = 0,
+  placeBet,
 }: BettingPositionProps) => {
   const bettingPositionClass = cn(styles.bettingPosition, styles[theme], {
     [styles.winner]: winner,
   });
 
+  function handleClick(label: BettingPositionProps["label"]) {
+    placeBet(label);
+  }
+
   return (
-    <div className={bettingPositionClass}>
+    <div onClick={() => handleClick(label)} className={bettingPositionClass}>
       <div className={styles.betArea}>{bet !== 0 && <Bet bet={bet} />}</div>
       <div className={styles.label}>{label}</div>
     </div>
