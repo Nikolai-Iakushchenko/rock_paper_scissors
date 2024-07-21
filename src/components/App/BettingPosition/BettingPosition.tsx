@@ -1,17 +1,27 @@
 import styles from "./BettingPosition.module.css";
 import cn from "classnames";
 import Bet from "../../Bet/Bet.tsx";
+// import { BETTING_POSITION_THEME } from "../../Game/Game.tsx";
+
+// import type { Theme } from "../../Game/Game.tsx";
+// export type Theme = "blue" | "green" | "red";
+
+export enum BettingPositionTheme {
+  BLUE = "blue",
+  GREEN = "green",
+  RED = "red",
+}
 
 interface BettingPositionProps {
   label: string;
   winner: boolean;
   bet: number;
-  theme: "blue" | "green" | "red";
+  theme: BettingPositionTheme;
 }
 
 const BettingPosition = ({
   label = "bet",
-  theme = "blue",
+  theme = BettingPositionTheme.BLUE,
   winner = false,
   bet = 0,
 }: BettingPositionProps) => {
