@@ -1,0 +1,11 @@
+.playersChoiceMessage {
+  display: grid;
+  align-content: center;
+  font-size: 2em;
+}
+
+.preposition {
+  color: var(--golden);
+  font-size: 0.7em;
+  margin-inline: 1.5em;
+}
