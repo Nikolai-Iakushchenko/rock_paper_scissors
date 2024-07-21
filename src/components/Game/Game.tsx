@@ -29,13 +29,15 @@ import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
 
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
+  playersBalance: number;
 }
 
-const Game = ({ setPlayersBalance }: GameProps) => {
+const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel></MessagePanel>
       <BettingPositionList
+        playersBalance={playersBalance}
         setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
       <ControlPanel>

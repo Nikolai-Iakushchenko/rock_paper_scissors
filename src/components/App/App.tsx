@@ -16,7 +16,10 @@ function App() {
   return (
     <div className={styles.app}>
       <InfoPanel playersBalance={playersBalance} />
-      <Game setPlayersBalance={setPlayersBalance} />
+      <Game
+        playersBalance={playersBalance}
+        setPlayersBalance={setPlayersBalance}
+      />
     </div>
   );
 }

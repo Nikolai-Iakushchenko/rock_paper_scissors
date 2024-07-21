@@ -21,25 +21,30 @@ type BettingPositions = {
 
 interface BettingPositionListProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
+  playersBalance: number;
 }
 
 const BettingPositionList = ({
   setPlayersBalance,
+  playersBalance,
 }: BettingPositionListProps) => {
   const [bettingPositions, setBettingPositions] = useState(
     {} as BettingPositions,
   );
 
   function placeBet(betOption: BettingOption) {
-    if (
-      Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS
-    ) {
+    if (playersBalance - BET_AMOUNT >= 0) {
       setPlayersBalance((balance) => balance - BET_AMOUNT);
       setBettingPositions((state) => {
         if (state[betOption]) {
           return { ...state, [betOption]: state[betOption] + BET_AMOUNT };
         }
-        return { ...state, [betOption]: BET_AMOUNT };
+        if (
+          Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS
+        ) {
+          return { ...state, [betOption]: BET_AMOUNT };
+        }
+        return state;
       });
     }
   }
@@ -57,14 +62,14 @@ const BettingPositionList = ({
         label={BettingOption.PAPER}
         theme={BettingPositionTheme.GREEN}
         winner={true}
-        bet={50000}
+        bet={bettingPositions[BettingOption.PAPER] || 0}
         placeBet={placeBet}
       />
       <BettingPosition
         label={BettingOption.SCISSORS}
         theme={BettingPositionTheme.RED}
         winner={false}
-        bet={0}
+        bet={bettingPositions[BettingOption.SCISSORS] || 0}
         placeBet={placeBet}
       />
     </div>
