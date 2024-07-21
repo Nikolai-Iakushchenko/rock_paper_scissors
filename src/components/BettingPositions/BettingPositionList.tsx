@@ -5,6 +5,7 @@ import BettingPosition, {
 } from "../App/BettingPosition/BettingPosition.tsx";
 
 const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
+const BET_AMOUNT = 500;
 
 export enum BettingOption {
   ROCK = "rock",
@@ -18,21 +19,29 @@ type BettingPositions = {
   [BettingOption.SCISSORS]?: number;
 };
 
-const BettingPositionList = () => {
+interface BettingPositionListProps {
+  setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const BettingPositionList = ({
+  setPlayersBalance,
+}: BettingPositionListProps) => {
   const [bettingPositions, setBettingPositions] = useState(
     {} as BettingPositions,
   );
 
   function placeBet(betOption: BettingOption) {
-    setBettingPositions((state) => {
-      if (state[betOption]) {
-        return { ...state, [betOption]: state[betOption] + 500 };
-      }
-      if (Object.keys(state).length < MAX_NUMBER_OF_BETTING_POSITIONS) {
-        return { ...state, [betOption]: 500 };
-      }
-      return state;
-    });
+    if (
+      Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS
+    ) {
+      setPlayersBalance((balance) => balance - BET_AMOUNT);
+      setBettingPositions((state) => {
+        if (state[betOption]) {
+          return { ...state, [betOption]: state[betOption] + BET_AMOUNT };
+        }
+        return { ...state, [betOption]: BET_AMOUNT };
+      });
+    }
   }
 
   return (

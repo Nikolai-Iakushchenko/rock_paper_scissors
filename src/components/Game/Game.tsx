@@ -35,7 +35,9 @@ const Game = ({ setPlayersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel></MessagePanel>
-      <BettingPositionList></BettingPositionList>
+      <BettingPositionList
+        setPlayersBalance={setPlayersBalance}
+      ></BettingPositionList>
       <ControlPanel>
         <BettingDoneButton />
       </ControlPanel>
