@@ -1,0 +1,20 @@
+.gameResultMessage {
+  display: grid;
+  align-content: center;
+  text-align: center;
+  row-gap: 5%;
+}
+
+.winningBet {
+  color: var(--light-green);
+  font-size: 4em;
+
+}
+
+.winMessage {
+  font-size: 2em;
+}
+
+.winText {
+  color: var(--golden);
+}
