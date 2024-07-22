@@ -40,25 +40,22 @@ const BettingPositionList = ({
     // setPlayersBalance((balance) => balance - BET_AMOUNT);
 
     setPlayerAccount((state) => {
-      if (state.balance - BET_AMOUNT < 0) {
+      console.log("state.balance", state.balance);
+
+      if (
+        state.balance - BET_AMOUNT < 0 ||
+        Object.keys(state.bettingPositions).length >
+          MAX_NUMBER_OF_BETTING_POSITIONS
+      ) {
+        console.log("if1");
         return state;
       }
 
-      if (
-        !state.bettingPositions[bettingOption] &&
-        Object.keys(state.bettingPositions).length <
-          MAX_NUMBER_OF_BETTING_POSITIONS
-      ) {
+      if (!state.bettingPositions[bettingOption]) {
+        console.log("if2");
         return { ...state, [bettingOption]: BET_AMOUNT };
       }
-
-      if (state.bettingPositions[bettingOption]) {
-        return {
-          ...state,
-          [bettingOption]: state.bettingPositions[bettingOption] + BET_AMOUNT,
-        };
-      }
-
+      console.log("else");
       return state;
     });
   }
