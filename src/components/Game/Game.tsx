@@ -8,20 +8,37 @@ import BettingPositionList from "../BettingPositions/BettingPositionList.tsx";
 // } from "../App/BettingPosition/BettingPosition.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
-import type { PlayerAccount } from "../App/App.tsx";
+
+// export type Theme = "blue" | "green" | "red";
+
+// const BETTING_POSITIONS = {
+//   rock: "rock",
+//   paper: "paper",
+//   scissors: "scissors",
+// };
+
+// export const BETTING_POSITION_THEME: {
+//   red: string;
+//   green: string;
+//   blue: string
+// } = {
+//   blue: "blue",
+//   green: "green",
+//   red: "red",
+// };
 
 interface GameProps {
-  setPlayerAccount: React.Dispatch<React.SetStateAction<PlayerAccount>>;
-  playerAccount: PlayerAccount;
+  setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
+  playersBalance: number;
 }
 
-const Game = ({ playerAccount, setPlayerAccount }: GameProps) => {
+const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel></MessagePanel>
       <BettingPositionList
-        playerAccount={playerAccount}
-        setPlayerAccount={setPlayerAccount}
+        playersBalance={playersBalance}
+        setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
       <ControlPanel>
         <BettingDoneButton />
