@@ -11,14 +11,10 @@ interface GameProps {
 }
 
 export type Option = "rock" | "paper" | "scissors";
-
-// export enum BettingOption {
-//   ROCK = "rock",
-//   PAPER = "paper",
-//   SCISSORS = "scissors",
-// }
+export type GameStage = "start" | "playing" | "finish";
 
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
+  const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<Option | null>(null);
   const [playerChoice, setPlayersChoice] = useState<Option | null>(null);
 
@@ -42,6 +38,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel
+        gameStage={gameStage}
         playerChoice={playerChoice}
         computerChoice={computerChoice}
       ></MessagePanel>
