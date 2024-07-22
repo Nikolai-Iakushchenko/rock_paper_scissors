@@ -10,16 +10,34 @@ import { useState } from "react";
 
 const INITIAL_PLAYERS_BALANCE = 5000;
 
+export enum BettingOption {
+  ROCK = "rock",
+  PAPER = "paper",
+  SCISSORS = "scissors",
+}
+
+type BettingPositions = {
+  [BettingOption.ROCK]?: number;
+  [BettingOption.PAPER]?: number;
+  [BettingOption.SCISSORS]?: number;
+};
+
+export interface PlayerAccount {
+  balance: number;
+  bettingPositions: BettingPositions;
+}
+
 function App() {
-  const [playersBalance, setPlayersBalance] = useState(INITIAL_PLAYERS_BALANCE);
+  // const [playersBalance, setPlayersBalance] = useState(INITIAL_PLAYERS_BALANCE);
+  const [playerAccount, setPlayerAccount] = useState<PlayerAccount>({
+    balance: INITIAL_PLAYERS_BALANCE,
+    bettingPositions: {},
+  });
 
   return (
     <div className={styles.app}>
-      <InfoPanel playersBalance={playersBalance} />
-      <Game
-        playersBalance={playersBalance}
-        setPlayersBalance={setPlayersBalance}
-      />
+      <InfoPanel playerAccount={playerAccount} />
+      <Game playerAccount={playerAccount} setPlayerAccount={setPlayerAccount} />
     </div>
   );
 }
