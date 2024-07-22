@@ -33,19 +33,27 @@ const BettingPositionList = ({
   );
 
   function placeBet(betOption: BettingOption) {
-    if (playersBalance - BET_AMOUNT >= 0) {
+    // player has less balance than available for bet
+    if (playersBalance - BET_AMOUNT < 0) {
+      return;
+    }
+
+    // Add new betting position
+    if (
+      Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS &&
+      !bettingPositions[betOption]
+    ) {
+      setBettingPositions({ ...bettingPositions, [betOption]: BET_AMOUNT });
       setPlayersBalance((balance) => balance - BET_AMOUNT);
-      setBettingPositions((state) => {
-        if (state[betOption]) {
-          return { ...state, [betOption]: state[betOption] + BET_AMOUNT };
-        }
-        if (
-          Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS
-        ) {
-          return { ...state, [betOption]: BET_AMOUNT };
-        }
-        return state;
+    }
+
+    // Increase bet on existing position
+    if (bettingPositions[betOption]) {
+      setBettingPositions({
+        ...bettingPositions,
+        [betOption]: bettingPositions[betOption] + BET_AMOUNT,
       });
+      setPlayersBalance((balance) => balance - BET_AMOUNT);
     }
   }
 
