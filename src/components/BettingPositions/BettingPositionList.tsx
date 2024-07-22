@@ -3,16 +3,15 @@ import { useState } from "react";
 import BettingPosition, {
   BettingPositionTheme,
 } from "../App/BettingPosition/BettingPosition.tsx";
-import { BettingOption } from "../Game/Game.tsx";
 
 const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
 const BET_AMOUNT = 500;
 
-// export enum BettingOption {
-//   ROCK = "rock",
-//   PAPER = "paper",
-//   SCISSORS = "scissors",
-// }
+export enum BettingOption {
+  ROCK = "rock",
+  PAPER = "paper",
+  SCISSORS = "scissors",
+}
 
 type BettingPositions = {
   [BettingOption.ROCK]?: number;

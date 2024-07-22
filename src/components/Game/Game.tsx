@@ -10,21 +10,27 @@ interface GameProps {
   playersBalance: number;
 }
 
-export enum BettingOption {
-  ROCK = "rock",
-  PAPER = "paper",
-  SCISSORS = "scissors",
-}
+export type Option = "rock" | "paper" | "scissors";
+
+// export enum BettingOption {
+//   ROCK = "rock",
+//   PAPER = "paper",
+//   SCISSORS = "scissors",
+// }
 
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
-  const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
-    null,
-  );
-  const [playerChoice, setPlayersChoice] = useState<BettingOption | null>(null);
+  const [computerChoice, setComputerChoice] = useState<Option | null>(null);
+  const [playerChoice, setPlayersChoice] = useState<Option | null>(null);
+
+  function chooseRandomOption(
+    options: Option[] = ["rock", "scissors", "paper"],
+  ): Option {
+    return options[Math.floor(Math.random() * options.length)];
+  }
 
   function bettingOptionsMatch() {
-    setComputerChoice(BettingOption.PAPER);
-    setPlayersChoice(BettingOption.SCISSORS);
+    setComputerChoice(chooseRandomOption());
+    setPlayersChoice(chooseRandomOption());
   }
 
   function runGameRound() {
