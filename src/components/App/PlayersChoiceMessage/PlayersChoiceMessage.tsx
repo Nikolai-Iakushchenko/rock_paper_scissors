@@ -1,10 +1,20 @@
 import styles from "./PlayersChoiceMessage.module.css";
+import { BettingOption } from "../../Game/Game.tsx";
 
-const PlayersChoiceMessage = () => {
+interface PlayersChoiceMessageProps {
+  computerChoice: BettingOption | null;
+  playerChoice: BettingOption | null;
+}
+
+const PlayersChoiceMessage = ({
+  computerChoice,
+  playerChoice,
+}: PlayersChoiceMessageProps) => {
   return (
     <div className={styles.playersChoiceMessage}>
       <p>
-        rock <span className={styles.preposition}>vs</span> paper
+        {computerChoice} <span className={styles.preposition}>vs</span>{" "}
+        {playerChoice}
       </p>
     </div>
   );

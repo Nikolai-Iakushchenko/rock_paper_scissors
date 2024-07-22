@@ -1,47 +1,50 @@
 import styles from "./Game.module.css";
-// import { ReactElement } from "react";
 import MessagePanel from "../MessagePanel/MessagePanel.tsx";
 import BettingPositionList from "../BettingPositions/BettingPositionList.tsx";
-// import type { Theme } from "../App/BettingPosition/BettingPosition.tsx";
-// import BettingPosition, {
-//   BettingPositionTheme,
-// } from "../App/BettingPosition/BettingPosition.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
-
-// export type Theme = "blue" | "green" | "red";
-
-// const BETTING_POSITIONS = {
-//   rock: "rock",
-//   paper: "paper",
-//   scissors: "scissors",
-// };
-
-// export const BETTING_POSITION_THEME: {
-//   red: string;
-//   green: string;
-//   blue: string
-// } = {
-//   blue: "blue",
-//   green: "green",
-//   red: "red",
-// };
+import { useState } from "react";
 
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
 }
 
+export enum BettingOption {
+  ROCK = "rock",
+  PAPER = "paper",
+  SCISSORS = "scissors",
+}
+
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
+  const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
+    null,
+  );
+  const [playerChoice, setPlayersChoice] = useState<BettingOption | null>(null);
+
+  function bettingOptionsMatch() {
+    setComputerChoice(BettingOption.PAPER);
+    setPlayersChoice(BettingOption.SCISSORS);
+  }
+
+  function runGameRound() {
+    //    run paper,scissors,rock match
+    bettingOptionsMatch();
+    //   compare computer vs player choice and find who won
+  }
+
   return (
     <main className={styles.game}>
-      <MessagePanel></MessagePanel>
+      <MessagePanel
+        playerChoice={playerChoice}
+        computerChoice={computerChoice}
+      ></MessagePanel>
       <BettingPositionList
         playersBalance={playersBalance}
         setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
       <ControlPanel>
-        <BettingDoneButton />
+        <BettingDoneButton runGameRound={runGameRound} />
       </ControlPanel>
     </main>
   );
