@@ -53,7 +53,6 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
 
-    // return playRockPaperScissors(computerMove, playerMove);
     setWinner(playRockPaperScissors(computerMove, playerMove));
   }
 

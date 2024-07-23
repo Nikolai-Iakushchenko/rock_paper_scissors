@@ -27,7 +27,9 @@ const MessagePanel = ({
           computerChoice={computerChoice}
         />
       )}
-      {gameStage === "finish" && <GameResultMessage winner={winner} />}
+      {gameStage === "finish" && (
+        <GameResultMessage playerChoice={playerChoice} winner={winner} />
+      )}
     </div>
   );
 };
