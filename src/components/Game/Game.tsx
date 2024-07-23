@@ -5,6 +5,8 @@ import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
 import { useState } from "react";
 
+const PLAYING_DURATION = 1000;
+
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
@@ -30,9 +32,11 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   }
 
   function runGameRound() {
+    setGameStage("playing");
     //    run paper,scissors,rock match
     bettingOptionsMatch();
     //   compare computer vs player choice and find who won
+    setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
   }
 
   return (
