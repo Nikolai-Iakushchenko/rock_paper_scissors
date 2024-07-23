@@ -7,13 +7,8 @@ import { useState } from "react";
 
 const PLAYING_DURATION = 1000;
 
-interface GameProps {
-  setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
-  playersBalance: number;
-}
-
 export type Option = "rock" | "paper" | "scissors";
-type Tie = "tie";
+export type Tie = "tie";
 export type GameStage = "start" | "playing" | "finish";
 
 function playRockPaperScissors(choice1: Option, choice2: Option): Option | Tie {
@@ -34,10 +29,16 @@ function playRockPaperScissors(choice1: Option, choice2: Option): Option | Tie {
   return "tie";
 }
 
+interface GameProps {
+  setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
+  playersBalance: number;
+}
+
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<Option | null>(null);
   const [playerChoice, setPlayersChoice] = useState<Option | null>(null);
+  const [winner, setWinner] = useState<Option | Tie | null>(null);
 
   function chooseRandomOption(
     options: Option[] = ["rock", "scissors", "paper"],
@@ -52,7 +53,8 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
 
-    return playRockPaperScissors(computerMove, playerMove);
+    // return playRockPaperScissors(computerMove, playerMove);
+    setWinner(playRockPaperScissors(computerMove, playerMove));
   }
 
   function runGameRound() {
@@ -66,6 +68,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel
+        winner={winner}
         gameStage={gameStage}
         playerChoice={playerChoice}
         computerChoice={computerChoice}

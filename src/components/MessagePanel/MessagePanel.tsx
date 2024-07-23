@@ -1,7 +1,7 @@
 import styles from "./MessagePanel.module.css";
 // import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
 import PlayersChoiceMessage from "../App/PlayersChoiceMessage/PlayersChoiceMessage.tsx";
-import { BettingOption, GameStage } from "../Game/Game.tsx";
+import { BettingOption, GameStage, Option, Tie } from "../Game/Game.tsx";
 import StartGameMessage from "../StartGameMessage/StartGameMessage.tsx";
 import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
 
@@ -9,12 +9,14 @@ interface MessagePanelProps {
   computerChoice: BettingOption | null;
   playerChoice: BettingOption | null;
   gameStage: GameStage;
+  winner: Option | Tie | null;
 }
 
 const MessagePanel = ({
   computerChoice,
   playerChoice,
   gameStage,
+  winner,
 }: MessagePanelProps) => {
   return (
     <div className={styles.messagePanel}>
@@ -25,7 +27,7 @@ const MessagePanel = ({
           computerChoice={computerChoice}
         />
       )}
-      {gameStage === "finish" && <GameResultMessage />}
+      {gameStage === "finish" && <GameResultMessage winner={winner} />}
     </div>
   );
 };
