@@ -69,12 +69,16 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   );
 
   function chooseRandomOption(
-    options: BettingOption[] = ["rock", "scissors", "paper"],
+    options: BettingOption[] = [
+      BettingOption.ROCK,
+      BettingOption.SCISSORS,
+      BettingOption.PAPER,
+    ],
   ): BettingOption {
     return options[Math.floor(Math.random() * options.length)];
   }
 
-  function bettingOptionsMatch() {
+  function playersChoicesMatch() {
     const computerMove = chooseRandomOption();
     const playerMove = chooseRandomOption();
 
@@ -87,7 +91,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   function runGameRound() {
     setGameStage("playing");
     //    run paper,scissors,rock match
-    bettingOptionsMatch();
+    playersChoicesMatch();
     //   compare computer vs player choice and find who won
     setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
   }

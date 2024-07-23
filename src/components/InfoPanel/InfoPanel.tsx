@@ -10,8 +10,8 @@ const InfoPanel = ({ playersBalance }: InfoPanelProps) => {
   return (
     <div className={styles.infoPanel}>
       <InfoItem label={"balance"} value={playersBalance} />
-      <InfoItem label={"bet"} value={500} />
-      <InfoItem label={"win"} value={500} />
+      <InfoItem label={"bet"} value={0} />
+      <InfoItem label={"win"} value={0} />
     </div>
   );
 };
