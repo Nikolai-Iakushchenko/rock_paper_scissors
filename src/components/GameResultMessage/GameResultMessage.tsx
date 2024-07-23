@@ -1,9 +1,9 @@
 import styles from "./GameResultMessage.module.css";
-import type { Option, Tie } from "../Game/Game.tsx";
+import type { BettingOption, Tie } from "../Game/Game.tsx";
 
 interface GameResultMessageProps {
-  winner: Option | Tie | null;
-  playerChoice: Option | null;
+  winner: BettingOption | Tie | null;
+  playerChoice: BettingOption | null;
 }
 
 const GameResultMessage = ({

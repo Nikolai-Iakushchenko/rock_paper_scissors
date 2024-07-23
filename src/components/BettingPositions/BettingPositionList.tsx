@@ -1,36 +1,40 @@
 import styles from "./BettngPositionList.module.css";
-import { useState } from "react";
 import BettingPosition, {
   BettingPositionTheme,
 } from "../App/BettingPosition/BettingPosition.tsx";
+import { BettingOption, BettingPositions } from "../Game/Game.tsx";
 
 const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
 const BET_AMOUNT = 500;
 
-export enum BettingOption {
-  ROCK = "rock",
-  PAPER = "paper",
-  SCISSORS = "scissors",
-}
-
-type BettingPositions = {
-  [BettingOption.ROCK]?: number;
-  [BettingOption.PAPER]?: number;
-  [BettingOption.SCISSORS]?: number;
-};
+// export enum BettingOption {
+//   ROCK = "rock",
+//   PAPER = "paper",
+//   SCISSORS = "scissors",
+// }
+//
+// type BettingPositions = {
+//   [BettingOption.ROCK]?: number;
+//   [BettingOption.PAPER]?: number;
+//   [BettingOption.SCISSORS]?: number;
+// };
 
 interface BettingPositionListProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
+  bettingPositions: BettingPositions;
+  setBettingPositions: React.Dispatch<React.SetStateAction<BettingPositions>>;
 }
 
 const BettingPositionList = ({
   setPlayersBalance,
   playersBalance,
+  bettingPositions,
+  setBettingPositions,
 }: BettingPositionListProps) => {
-  const [bettingPositions, setBettingPositions] = useState(
-    {} as BettingPositions,
-  );
+  // const [bettingPositions, setBettingPositions] = useState(
+  //   {} as BettingPositions,
+  // );
 
   function placeBet(betOption: BettingOption) {
     // player has less balance than available for bet

@@ -7,11 +7,20 @@ import { useState } from "react";
 
 const PLAYING_DURATION = 1000;
 
-export type Option = "rock" | "paper" | "scissors";
+// export type BettingOption = "rock" | "paper" | "scissors";
+export enum BettingOption {
+  ROCK = "rock",
+  PAPER = "paper",
+  SCISSORS = "scissors",
+}
+
 export type Tie = "tie";
 export type GameStage = "start" | "playing" | "finish";
 
-function playRockPaperScissors(choice1: Option, choice2: Option): Option | Tie {
+function playRockPaperScissors(
+  choice1: BettingOption,
+  choice2: BettingOption,
+): BettingOption | Tie {
   const comparison = {
     rock: { weakTo: "paper", strongTo: "scissors" },
     paper: { weakTo: "scissors", strongTo: "rock" },
@@ -29,6 +38,18 @@ function playRockPaperScissors(choice1: Option, choice2: Option): Option | Tie {
   return "tie";
 }
 
+// export enum BettingOption {
+//   ROCK = "rock",
+//   PAPER = "paper",
+//   SCISSORS = "scissors",
+// }
+
+export type BettingPositions = {
+  rock?: number;
+  paper?: number;
+  scissors?: number;
+};
+
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
@@ -36,13 +57,20 @@ interface GameProps {
 
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
-  const [computerChoice, setComputerChoice] = useState<Option | null>(null);
-  const [playerChoice, setPlayersChoice] = useState<Option | null>(null);
-  const [winningOption, setWinningOption] = useState<Option | Tie | null>(null);
+  const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
+    null,
+  );
+  const [playerChoice, setPlayersChoice] = useState<BettingOption | null>(null);
+  const [winningOption, setWinningOption] = useState<
+    BettingOption | Tie | null
+  >(null);
+  const [bettingPositions, setBettingPositions] = useState(
+    {} as BettingPositions,
+  );
 
   function chooseRandomOption(
-    options: Option[] = ["rock", "scissors", "paper"],
-  ): Option {
+    options: BettingOption[] = ["rock", "scissors", "paper"],
+  ): BettingOption {
     return options[Math.floor(Math.random() * options.length)];
   }
 
@@ -73,6 +101,8 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
         computerChoice={computerChoice}
       ></MessagePanel>
       <BettingPositionList
+        bettingPositions={bettingPositions}
+        setBettingPositions={setBettingPositions}
         playersBalance={playersBalance}
         setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
