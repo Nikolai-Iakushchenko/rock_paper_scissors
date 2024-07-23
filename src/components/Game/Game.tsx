@@ -13,7 +13,26 @@ interface GameProps {
 }
 
 export type Option = "rock" | "paper" | "scissors";
+type Tie = "tie";
 export type GameStage = "start" | "playing" | "finish";
+
+function playRockPaperScissors(choice1: Option, choice2: Option): Option | Tie {
+  const comparison = {
+    rock: { weakTo: "paper", strongTo: "scissors" },
+    paper: { weakTo: "scissors", strongTo: "rock" },
+    scissors: { weakTo: "rock", strongTo: "paper" },
+  };
+
+  if (comparison[choice1].strongTo === choice2) {
+    return choice1;
+  }
+
+  if (comparison[choice1].weakTo === choice2) {
+    return choice2;
+  }
+
+  return "tie";
+}
 
 const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
@@ -27,8 +46,13 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   }
 
   function bettingOptionsMatch() {
-    setComputerChoice(chooseRandomOption());
-    setPlayersChoice(chooseRandomOption());
+    const computerMove = chooseRandomOption();
+    const playerMove = chooseRandomOption();
+
+    setComputerChoice(computerMove);
+    setPlayersChoice(playerMove);
+
+    return playRockPaperScissors(computerMove, playerMove);
   }
 
   function runGameRound() {
