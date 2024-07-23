@@ -6,9 +6,11 @@ interface GameResultMessageProps {
 }
 
 const GameResultMessage = ({ winner }: GameResultMessageProps) => {
+  const message = winner === "tie" ? "Tie" : `${winner} won`;
+
   return (
     <div className={styles.gameResultMessage}>
-      <div className={styles.winningBet}>{winner} won</div>
+      <div className={styles.winningBet}>{message}</div>
       <div className={styles.winMessage}>
         <span className={styles.winText}>you win</span> xxx.xx
       </div>
