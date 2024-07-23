@@ -38,7 +38,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<Option | null>(null);
   const [playerChoice, setPlayersChoice] = useState<Option | null>(null);
-  const [winner, setWinner] = useState<Option | Tie | null>(null);
+  const [winningOption, setWinningOption] = useState<Option | Tie | null>(null);
 
   function chooseRandomOption(
     options: Option[] = ["rock", "scissors", "paper"],
@@ -53,7 +53,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
 
-    setWinner(playRockPaperScissors(computerMove, playerMove));
+    setWinningOption(playRockPaperScissors(computerMove, playerMove));
   }
 
   function runGameRound() {
@@ -67,7 +67,7 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel
-        winner={winner}
+        winner={winningOption}
         gameStage={gameStage}
         playerChoice={playerChoice}
         computerChoice={computerChoice}
