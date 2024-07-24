@@ -10,17 +10,20 @@ const GameResultMessage = ({
   playerChoice,
   winner,
 }: GameResultMessageProps) => {
-  const message = winner === "tie" ? "Tie" : `${winner} won`;
+  const wonOptionMessage = winner === "tie" ? "Tie" : `${winner} won`;
+  const playerWonSumMessage =
+    playerChoice === winner ? (
+      <>
+        <span className={styles.winText}>you win</span> xxx.xx
+      </>
+    ) : (
+      "Better luck next time"
+    );
 
   return (
     <div className={styles.gameResultMessage}>
-      <div className={styles.winningBet}>{message}</div>
-
-      {playerChoice === winner && (
-        <div className={styles.winMessage}>
-          <span className={styles.winText}>you win</span> xxx.xx
-        </div>
-      )}
+      <div className={styles.winningBet}>{wonOptionMessage}</div>
+      <div className={styles.winMessage}>{playerWonSumMessage}</div>
     </div>
   );
 };
