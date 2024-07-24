@@ -1,4 +1,5 @@
 import styles from "./BettingDoneButton.module.css";
+import { GameStage } from "../Game/Game.tsx";
 
 // function bettingOptionsMatch() {}
 //
@@ -10,11 +11,19 @@ import styles from "./BettingDoneButton.module.css";
 
 interface BettingDoneButtonProps {
   runGameRound: () => void;
+  gameStage: GameStage;
 }
 
-const BettingDoneButton = ({ runGameRound }: BettingDoneButtonProps) => {
+const BettingDoneButton = ({
+  runGameRound,
+  gameStage,
+}: BettingDoneButtonProps) => {
   return (
-    <button onClick={runGameRound} className={styles.bettingDoneButton}>
+    <button
+      disabled={gameStage === "playing"}
+      onClick={runGameRound}
+      className={styles.bettingDoneButton}
+    >
       play
     </button>
   );

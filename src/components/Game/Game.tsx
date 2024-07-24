@@ -159,7 +159,7 @@ const Game = ({
         setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
       <ControlPanel>
-        <BettingDoneButton runGameRound={runGameRound} />
+        <BettingDoneButton gameStage={gameStage} runGameRound={runGameRound} />
       </ControlPanel>
     </main>
   );

@@ -5,3 +5,7 @@
   color: var(--golden);
   background-color: var(--black);
 }
+
+.bettingDoneButton:disabled {
+  opacity: 0.5;
+}
