@@ -3,7 +3,9 @@ import MessagePanel from "../MessagePanel/MessagePanel.tsx";
 import BettingPositionList from "../BettingPositions/BettingPositionList.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import calculateReturn from "../../utils/CalculateReturn.ts";
+import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 
 const PLAYING_DURATION = 1000;
 
@@ -38,12 +40,6 @@ function playRockPaperScissors(
   return "tie";
 }
 
-// export enum BettingOption {
-//   ROCK = "rock",
-//   PAPER = "paper",
-//   SCISSORS = "scissors",
-// }
-
 export type BettingPositions = {
   rock?: number;
   paper?: number;
@@ -53,9 +49,10 @@ export type BettingPositions = {
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
+  setWin: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
+const Game = ({ setPlayersBalance, playersBalance, setWin }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
     null,
@@ -67,6 +64,49 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   const [bettingPositions, setBettingPositions] = useState(
     {} as BettingPositions,
   );
+
+  let hasPlayerWon;
+  let playerWiningBet: number;
+  let coefficient;
+  let numberOfBets;
+
+  useEffect(() => {
+    hasPlayerWon = winningOption === playerChoice;
+    playerWiningBet =
+      hasPlayerWon && playerChoice && bettingPositions[playerChoice]
+        ? bettingPositions[playerChoice]
+        : 0;
+
+    console.log("winningOption", winningOption);
+    console.log("playerChoice", playerChoice);
+    console.log("bettingPositions", bettingPositions);
+    console.log("playerWiningBet", playerWiningBet);
+
+    numberOfBets = Object.keys(bettingPositions).length;
+
+    coefficient = calculateCoefficient(Object.keys(numberOfBets).length);
+
+    const playerWinSum = playerWiningBet * coefficient;
+
+    setWin(playerWinSum);
+  }, [winningOption, playerChoice, bettingPositions]);
+
+  function runGameRound() {
+    setGameStage("playing");
+
+    //    run paper,scissors,rock match
+    const computerMove = chooseRandomOption();
+    const playerMove = chooseRandomOption();
+    const winningOption = playRockPaperScissors(computerMove, playerMove);
+
+    //   compare computer vs player choice and find who won
+
+    setComputerChoice(computerMove);
+    setPlayersChoice(playerMove);
+    setWinningOption(winningOption);
+
+    setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
+  }
 
   function chooseRandomOption(
     options: BettingOption[] = [
@@ -81,19 +121,11 @@ const Game = ({ setPlayersBalance, playersBalance }: GameProps) => {
   function playersChoicesMatch() {
     const computerMove = chooseRandomOption();
     const playerMove = chooseRandomOption();
+    const winningOption = playRockPaperScissors(computerMove, playerMove);
 
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
-
-    setWinningOption(playRockPaperScissors(computerMove, playerMove));
-  }
-
-  function runGameRound() {
-    setGameStage("playing");
-    //    run paper,scissors,rock match
-    playersChoicesMatch();
-    //   compare computer vs player choice and find who won
-    setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
+    setWinningOption(winningOption);
   }
 
   return (

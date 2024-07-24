@@ -8,12 +8,16 @@ const INITIAL_BALANCE = 5000;
 function App() {
   const [balance, setBalance] = useState(INITIAL_BALANCE);
   // const [bet, setBet] = useState(0);
-  // const [win, setWin] = useState(0);
+  const [win, setWin] = useState(0);
 
   return (
     <div className={styles.app}>
-      <InfoPanel playersBalance={balance} />
-      <Game playersBalance={balance} setPlayersBalance={setBalance} />
+      <InfoPanel playersBalance={balance} win={win} />
+      <Game
+        setWin={setWin}
+        playersBalance={balance}
+        setPlayersBalance={setBalance}
+      />
     </div>
   );
 }
