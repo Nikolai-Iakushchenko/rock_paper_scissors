@@ -76,17 +76,15 @@ const Game = ({ setPlayersBalance, playersBalance, setWin }: GameProps) => {
       hasPlayerWon && playerChoice && bettingPositions[playerChoice]
         ? bettingPositions[playerChoice]
         : 0;
+    numberOfBets = Object.keys(bettingPositions).length;
+    coefficient = calculateCoefficient(numberOfBets);
+    const playerWinSum = playerWiningBet * coefficient;
 
     console.log("winningOption", winningOption);
     console.log("playerChoice", playerChoice);
     console.log("bettingPositions", bettingPositions);
+    console.log("coefficient", coefficient);
     console.log("playerWiningBet", playerWiningBet);
-
-    numberOfBets = Object.keys(bettingPositions).length;
-
-    coefficient = calculateCoefficient(Object.keys(numberOfBets).length);
-
-    const playerWinSum = playerWiningBet * coefficient;
 
     setWin(playerWinSum);
   }, [winningOption, playerChoice, bettingPositions]);
