@@ -10,21 +10,21 @@ import { GameStage } from "../Game/Game.tsx";
 // }
 
 interface BettingDoneButtonProps {
-  runGameRound: () => void;
+  bettingDoneButtonHandler: () => void;
   gameStage: GameStage;
 }
 
 const BettingDoneButton = ({
-  runGameRound,
+  bettingDoneButtonHandler,
   gameStage,
 }: BettingDoneButtonProps) => {
   return (
     <button
       disabled={gameStage === "playing"}
-      onClick={runGameRound}
+      onClick={bettingDoneButtonHandler}
       className={styles.bettingDoneButton}
     >
-      play
+      {gameStage === "finish" ? "clear" : "play"}
     </button>
   );
 };

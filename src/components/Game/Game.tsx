@@ -123,6 +123,20 @@ const Game = ({
     setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
   }
 
+  function resetGame() {
+    console.log("reset");
+    //the return adds to the balance
+    setPlayersBalance(playersBalance + winSum);
+    setBettingPositions({});
+
+    setGameStage("start");
+
+    //   bets removed
+  }
+
+  const bettingDoneButtonHandler =
+    gameStage === "finish" ? resetGame : runGameRound;
+
   function chooseRandomOption(
     options: BettingOption[] = [
       BettingOption.ROCK,
@@ -159,7 +173,10 @@ const Game = ({
         setPlayersBalance={setPlayersBalance}
       ></BettingPositionList>
       <ControlPanel>
-        <BettingDoneButton gameStage={gameStage} runGameRound={runGameRound} />
+        <BettingDoneButton
+          gameStage={gameStage}
+          bettingDoneButtonHandler={bettingDoneButtonHandler}
+        />
       </ControlPanel>
     </main>
   );
