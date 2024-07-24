@@ -14,7 +14,7 @@ const GameResultMessage = ({
 }: GameResultMessageProps) => {
   const wonOptionMessage = winner === "tie" ? "Tie" : `${winner} won`;
   const playerWonSumMessage =
-    playerChoice === winner ? (
+    winSum > 0 ? (
       <>
         <span className={styles.winText}>you win</span> {winSum}
       </>

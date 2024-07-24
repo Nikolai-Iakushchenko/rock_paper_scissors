@@ -72,26 +72,36 @@ const Game = ({
     {} as BettingPositions,
   );
 
-  let hasPlayerWon;
+  let hasPlayerWonGame;
+  let hasPlayerWonBet;
+
   let playerWiningBet: number;
   let coefficient;
   let numberOfBets;
 
   useEffect(() => {
-    hasPlayerWon = winningOption === playerChoice;
+    hasPlayerWonGame = playerChoice !== null && winningOption === playerChoice;
+
+    hasPlayerWonBet =
+      hasPlayerWonGame &&
+      playerChoice !== null &&
+      Object.hasOwn(bettingPositions, playerChoice);
+
+    console.log("bettingPositions", bettingPositions);
+    console.log("winningOption", winningOption);
+    console.log("hasPlayerWonBet", hasPlayerWonBet);
+
     playerWiningBet =
-      hasPlayerWon && playerChoice && bettingPositions[playerChoice]
+      hasPlayerWonBet && playerChoice && bettingPositions[playerChoice]
         ? bettingPositions[playerChoice]
         : 0;
     numberOfBets = Object.keys(bettingPositions).length;
     coefficient = calculateCoefficient(numberOfBets);
     const playerWinSum = playerWiningBet * coefficient;
 
-    console.log("winningOption", winningOption);
-    console.log("playerChoice", playerChoice);
-    console.log("bettingPositions", bettingPositions);
-    console.log("coefficient", coefficient);
-    console.log("playerWiningBet", playerWiningBet);
+    // console.log("playerChoice", playerChoice);
+    // console.log("coefficient", coefficient);
+    // console.log("playerWiningBet", playerWiningBet);
 
     setWin(playerWinSum);
   }, [winningOption, playerChoice, bettingPositions]);
@@ -123,15 +133,15 @@ const Game = ({
     return options[Math.floor(Math.random() * options.length)];
   }
 
-  function playersChoicesMatch() {
-    const computerMove = chooseRandomOption();
-    const playerMove = chooseRandomOption();
-    const winningOption = playRockPaperScissors(computerMove, playerMove);
-
-    setComputerChoice(computerMove);
-    setPlayersChoice(playerMove);
-    setWinningOption(winningOption);
-  }
+  // function playersChoicesMatch() {
+  //   const computerMove = chooseRandomOption();
+  //   const playerMove = chooseRandomOption();
+  //   const winningOption = playRockPaperScissors(computerMove, playerMove);
+  //
+  //   setComputerChoice(computerMove);
+  //   setPlayersChoice(playerMove);
+  //   setWinningOption(winningOption);
+  // }
 
   return (
     <main className={styles.game}>
