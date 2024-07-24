@@ -2,7 +2,8 @@ import styles from "./BettngPositionList.module.css";
 import BettingPosition, {
   BettingPositionTheme,
 } from "../App/BettingPosition/BettingPosition.tsx";
-import { BettingOption, BettingPositions } from "../Game/Game.tsx";
+import { BettingPositions } from "../Game/Game.tsx";
+import BettingOptions, { BettingOption } from "../../config/BettingOptions.ts";
 
 const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
 const BET_AMOUNT = 500;
@@ -47,27 +48,16 @@ const BettingPositionList = ({
 
   return (
     <div className={styles.bettingPositionList}>
-      <BettingPosition
-        label={BettingOption.ROCK}
-        theme={BettingPositionTheme.BLUE}
-        winner={false}
-        bet={bettingPositions[BettingOption.ROCK] || 0}
-        placeBet={placeBet}
-      />
-      <BettingPosition
-        label={BettingOption.PAPER}
-        theme={BettingPositionTheme.GREEN}
-        winner={true}
-        bet={bettingPositions[BettingOption.PAPER] || 0}
-        placeBet={placeBet}
-      />
-      <BettingPosition
-        label={BettingOption.SCISSORS}
-        theme={BettingPositionTheme.RED}
-        winner={false}
-        bet={bettingPositions[BettingOption.SCISSORS] || 0}
-        placeBet={placeBet}
-      />
+      {BettingOptions.map((option) => (
+        <BettingPosition
+          key={option.label}
+          label={option.label}
+          winner={false}
+          bet={bettingPositions[option.label] || 0}
+          theme={option.theme}
+          placeBet={placeBet}
+        />
+      ))}
     </div>
   );
 };

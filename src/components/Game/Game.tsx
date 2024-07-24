@@ -6,15 +6,16 @@ import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
 import { useEffect, useState } from "react";
 import calculateReturn from "../../utils/CalculateReturn.ts";
 import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
+import { BettingOption } from "../../config/BettingOptions.ts";
 
 const PLAYING_DURATION = 1000;
 
 // export type BettingOption = "rock" | "paper" | "scissors";
-export enum BettingOption {
-  ROCK = "rock",
-  PAPER = "paper",
-  SCISSORS = "scissors",
-}
+// export enum BettingOption {
+//   ROCK = "rock",
+//   PAPER = "paper",
+//   SCISSORS = "scissors",
+// }
 
 export type Tie = "tie";
 export type GameStage = "start" | "playing" | "finish";
