@@ -4,17 +4,19 @@ import type { BettingOption, Tie } from "../Game/Game.tsx";
 interface GameResultMessageProps {
   winner: BettingOption | Tie | null;
   playerChoice: BettingOption | null;
+  winSum: number;
 }
 
 const GameResultMessage = ({
   playerChoice,
   winner,
+  winSum,
 }: GameResultMessageProps) => {
   const wonOptionMessage = winner === "tie" ? "Tie" : `${winner} won`;
   const playerWonSumMessage =
     playerChoice === winner ? (
       <>
-        <span className={styles.winText}>you win</span> xxx.xx
+        <span className={styles.winText}>you win</span> {winSum}
       </>
     ) : (
       "Better luck next time"

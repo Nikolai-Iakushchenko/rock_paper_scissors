@@ -10,9 +10,11 @@ interface MessagePanelProps {
   playerChoice: BettingOption | null;
   gameStage: GameStage;
   winner: BettingOption | Tie | null;
+  winSum: number;
 }
 
 const MessagePanel = ({
+  winSum,
   computerChoice,
   playerChoice,
   gameStage,
@@ -28,7 +30,11 @@ const MessagePanel = ({
         />
       )}
       {gameStage === "finish" && (
-        <GameResultMessage playerChoice={playerChoice} winner={winner} />
+        <GameResultMessage
+          winSum={winSum}
+          playerChoice={playerChoice}
+          winner={winner}
+        />
       )}
     </div>
   );

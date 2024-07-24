@@ -50,9 +50,15 @@ interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
   setWin: React.Dispatch<React.SetStateAction<number>>;
+  winSum: number;
 }
 
-const Game = ({ setPlayersBalance, playersBalance, setWin }: GameProps) => {
+const Game = ({
+  setPlayersBalance,
+  playersBalance,
+  setWin,
+  winSum,
+}: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
     null,
@@ -129,6 +135,7 @@ const Game = ({ setPlayersBalance, playersBalance, setWin }: GameProps) => {
   return (
     <main className={styles.game}>
       <MessagePanel
+        winSum={winSum}
         winner={winningOption}
         gameStage={gameStage}
         playerChoice={playerChoice}
