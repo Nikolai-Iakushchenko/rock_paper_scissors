@@ -12,15 +12,19 @@ import { GameStage } from "../Game/Game.tsx";
 interface BettingDoneButtonProps {
   bettingDoneButtonHandler: () => void;
   gameStage: GameStage;
+  isBettingDoneButtonDisabled: boolean;
 }
 
 const BettingDoneButton = ({
   bettingDoneButtonHandler,
+  isBettingDoneButtonDisabled,
   gameStage,
 }: BettingDoneButtonProps) => {
+  console.log("isBettingDoneButtonDisabled", isBettingDoneButtonDisabled);
+
   return (
     <button
-      disabled={gameStage === "playing"}
+      disabled={isBettingDoneButtonDisabled}
       onClick={bettingDoneButtonHandler}
       className={styles.bettingDoneButton}
     >

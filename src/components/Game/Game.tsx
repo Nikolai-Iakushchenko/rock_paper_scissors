@@ -72,39 +72,51 @@ const Game = ({
     {} as BettingPositions,
   );
 
-  let hasPlayerWonGame;
-  let hasPlayerWonBet;
+  // let hasPlayerWonGame;
+  // let hasPlayerWonBet;
+  //
+  // let playerWiningBet: number;
+  // let coefficient;
+  // let numberOfBets;
+  //
+  // let isBettingDoneButtonDisabled;
 
-  let playerWiningBet: number;
-  let coefficient;
-  let numberOfBets;
+  //   ===========================================================================
+  const hasPlayerWonGame =
+    playerChoice !== null && winningOption === playerChoice;
+
+  const hasPlayerWonBet =
+    hasPlayerWonGame &&
+    playerChoice !== null &&
+    Object.hasOwn(bettingPositions, playerChoice);
+
+  // console.log("bettingPositions", bettingPositions);
+  // console.log("winningOption", winningOption);
+  // console.log("hasPlayerWonBet", hasPlayerWonBet);
+
+  const playerWiningBet =
+    hasPlayerWonBet && playerChoice && bettingPositions[playerChoice]
+      ? bettingPositions[playerChoice]
+      : 0;
+  const numberOfBets = Object.keys(bettingPositions).length;
+  const coefficient = calculateCoefficient(numberOfBets);
+  const playerWinSum = playerWiningBet * coefficient;
+
+  console.log("numberOfBets", numberOfBets);
+  console.log("gameStage", gameStage);
+  const isBettingDoneButtonDisabled =
+    numberOfBets === 0 || gameStage === "playing";
+  // debugger;
+
+  // console.log("playerChoice", playerChoice);
+  // console.log("coefficient", coefficient);
+  // console.log("playerWiningBet", playerWiningBet);
 
   useEffect(() => {
-    hasPlayerWonGame = playerChoice !== null && winningOption === playerChoice;
-
-    hasPlayerWonBet =
-      hasPlayerWonGame &&
-      playerChoice !== null &&
-      Object.hasOwn(bettingPositions, playerChoice);
-
-    console.log("bettingPositions", bettingPositions);
-    console.log("winningOption", winningOption);
-    console.log("hasPlayerWonBet", hasPlayerWonBet);
-
-    playerWiningBet =
-      hasPlayerWonBet && playerChoice && bettingPositions[playerChoice]
-        ? bettingPositions[playerChoice]
-        : 0;
-    numberOfBets = Object.keys(bettingPositions).length;
-    coefficient = calculateCoefficient(numberOfBets);
-    const playerWinSum = playerWiningBet * coefficient;
-
-    // console.log("playerChoice", playerChoice);
-    // console.log("coefficient", coefficient);
-    // console.log("playerWiningBet", playerWiningBet);
-
     setWin(playerWinSum);
-  }, [winningOption, playerChoice, bettingPositions]);
+  }, [playerWinSum]);
+
+  //   ===========================================================================
 
   function runGameRound() {
     setGameStage("playing");
@@ -177,6 +189,7 @@ const Game = ({
         <BettingDoneButton
           gameStage={gameStage}
           bettingDoneButtonHandler={bettingDoneButtonHandler}
+          isBettingDoneButtonDisabled={isBettingDoneButtonDisabled}
         />
       </ControlPanel>
     </main>

@@ -8,7 +8,6 @@ interface InfoPanelProps {
 }
 
 const InfoPanel = ({ playersBalance, win }: InfoPanelProps) => {
-  console.log("win in InfoPanel", win);
   return (
     <div className={styles.infoPanel}>
       <InfoItem label={"balance"} value={playersBalance} />
