@@ -5,7 +5,9 @@
   aspect-ratio: 1 / 1;
   background-color: white;
   color: black;
-  /*font-weight: bold;*/
   border-radius: 50%;
   border: 0.2em solid var(--blue);
+  width: min-content;
+  padding: 0.3rem;
+  font-size: 1.3rem;
 }
