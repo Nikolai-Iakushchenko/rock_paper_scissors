@@ -94,8 +94,10 @@ const Game = ({
   const sumOfBets = Object.values(bettingPositions).reduce((a, b) => a + b, 0);
 
   useEffect(() => {
-    setWin(playerWinSum);
-  }, [playerWinSum]);
+    if (gameStage !== GameStage.PLAYING) {
+      setWin(playerWinSum);
+    }
+  }, [gameStage, playerWinSum]);
 
   useEffect(() => {
     setSumOfBets(sumOfBets);
