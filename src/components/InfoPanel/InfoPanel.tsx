@@ -1,5 +1,5 @@
 import styles from "./InfoPanel.module.css";
-import InfoItem from "../InfoItem/InfoItem.tsx";
+import InfoBox from "../InfoBox/InfoBox.tsx";
 
 interface InfoPanelProps {
   playersBalance: number;
@@ -10,9 +10,9 @@ interface InfoPanelProps {
 const InfoPanel = ({ playersBalance, winSum, sumOfBets }: InfoPanelProps) => {
   return (
     <div className={styles.infoPanel}>
-      <InfoItem label={"balance"} value={playersBalance} />
-      <InfoItem label={"bet"} value={sumOfBets} />
-      <InfoItem label={"win"} value={winSum} />
+      <InfoBox label={"balance"} value={playersBalance} />
+      <InfoBox label={"bet"} value={sumOfBets} />
+      <InfoBox label={"win"} value={winSum} />
     </div>
   );
 };
