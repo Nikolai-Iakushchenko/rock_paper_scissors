@@ -20,8 +20,6 @@ const BettingDoneButton = ({
   isBettingDoneButtonDisabled,
   gameStage,
 }: BettingDoneButtonProps) => {
-  console.log("isBettingDoneButtonDisabled", isBettingDoneButtonDisabled);
-
   return (
     <button
       disabled={isBettingDoneButtonDisabled}

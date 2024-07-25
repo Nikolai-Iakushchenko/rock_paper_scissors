@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import calculateReturn from "../../utils/CalculateReturn.ts";
 import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 import { BettingOption } from "../../config/BettingOptions.ts";
+import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
 const PLAYING_DURATION = 1000;
 
@@ -84,13 +85,13 @@ const Game = ({
   // let isBettingDoneButtonDisabled;
 
   //   ===========================================================================
+  const hasPlayerBetOnWinningOption =
+    playerChoice !== null && Object.hasOwn(bettingPositions, playerChoice);
+
   const hasPlayerWonGame =
     playerChoice !== null && winningOption === playerChoice;
 
-  const hasPlayerWonBet =
-    hasPlayerWonGame &&
-    playerChoice !== null &&
-    Object.hasOwn(bettingPositions, playerChoice);
+  const hasPlayerWonBet = hasPlayerWonGame && hasPlayerBetOnWinningOption;
 
   // console.log("bettingPositions", bettingPositions);
   // console.log("winningOption", winningOption);
@@ -104,10 +105,11 @@ const Game = ({
   const coefficient = calculateCoefficient(numberOfBets);
   const playerWinSum = playerWiningBet * coefficient;
 
-  console.log("numberOfBets", numberOfBets);
-  console.log("gameStage", gameStage);
   const isBettingDoneButtonDisabled =
     numberOfBets === 0 || gameStage === "playing";
+
+  const sumOfBets = Object.values(bettingPositions).reduce((a, b) => a + b, 0);
+
   // debugger;
 
   // console.log("playerChoice", playerChoice);
@@ -119,7 +121,7 @@ const Game = ({
   }, [playerWinSum]);
 
   useEffect(() => {
-    setSumOfBets(Object.values(bettingPositions).reduce((a, b) => a + b, 0));
+    setSumOfBets(sumOfBets);
   }, [bettingPositions]);
 
   //   ===========================================================================
@@ -142,15 +144,15 @@ const Game = ({
   }
 
   function resetGame() {
-    console.log("reset");
+    if (winningOption === "tie" && hasPlayerBetOnWinningOption) {
+      winSum = calculateTieReturn(numberOfBets, sumOfBets);
+    }
+
     //the return adds to the balance
     setPlayersBalance(playersBalance + winSum);
     setBettingPositions({});
-
     setGameStage("start");
     setWinningOption(null);
-
-    //   bets removed
   }
 
   const bettingDoneButtonHandler =
