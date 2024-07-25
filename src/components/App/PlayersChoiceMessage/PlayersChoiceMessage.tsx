@@ -1,5 +1,5 @@
 import styles from "./PlayersChoiceMessage.module.css";
-import { BettingOption } from "../../Game/Game.tsx";
+import type { BettingOption } from "../../../config/BettingOptions.ts";
 
 interface PlayersChoiceMessageProps {
   computerChoice: BettingOption | null;

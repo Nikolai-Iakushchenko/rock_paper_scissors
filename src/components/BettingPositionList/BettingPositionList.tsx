@@ -1,7 +1,5 @@
 import styles from "./BettngPositionList.module.css";
-import BettingPosition, {
-  BettingPositionTheme,
-} from "../App/BettingPosition/BettingPosition.tsx";
+import BettingPosition from "../App/BettingPosition/BettingPosition.tsx";
 import { BettingPositions, GameStage, Tie } from "../Game/Game.tsx";
 import BettingOptions, { BettingOption } from "../../config/BettingOptions.ts";
 

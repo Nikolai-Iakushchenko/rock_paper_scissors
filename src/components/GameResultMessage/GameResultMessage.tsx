@@ -1,14 +1,14 @@
 import styles from "./GameResultMessage.module.css";
-import type { BettingOption, Tie } from "../Game/Game.tsx";
+import type { Tie } from "../Game/Game.tsx";
+import { BettingOption } from "../../config/BettingOptions.ts";
 
 interface GameResultMessageProps {
-  winner: BettingOption | Tie | null;
+  winningOption: BettingOption | Tie | null;
   playerChoice: BettingOption | null;
   winSum: number;
 }
 
 const GameResultMessage = ({
-  playerChoice,
   winningOption,
   winSum,
 }: GameResultMessageProps) => {

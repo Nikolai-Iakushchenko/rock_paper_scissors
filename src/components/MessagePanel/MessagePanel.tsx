@@ -1,9 +1,10 @@
 import styles from "./MessagePanel.module.css";
 // import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
 import PlayersChoiceMessage from "../App/PlayersChoiceMessage/PlayersChoiceMessage.tsx";
-import { BettingOption, GameStage, Tie } from "../Game/Game.tsx";
+import { GameStage, Tie } from "../Game/Game.tsx";
 import StartGameMessage from "../StartGameMessage/StartGameMessage.tsx";
 import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
+import type { BettingOption } from "../../config/BettingOptions.ts";
 
 interface MessagePanelProps {
   computerChoice: BettingOption | null;
