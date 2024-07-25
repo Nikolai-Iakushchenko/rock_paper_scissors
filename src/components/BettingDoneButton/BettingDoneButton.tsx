@@ -18,7 +18,7 @@ const BettingDoneButton = ({
       onClick={bettingDoneButtonHandler}
       className={styles.bettingDoneButton}
     >
-      {gameStage === "finish" ? "clear" : "play"}
+      {gameStage === GameStage.FINISH ? "clear" : "play"}
     </button>
   );
 };

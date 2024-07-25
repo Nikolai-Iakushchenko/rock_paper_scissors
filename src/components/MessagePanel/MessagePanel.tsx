@@ -1,9 +1,9 @@
 import styles from "./MessagePanel.module.css";
-import PlayersChoiceMessage from "../App/PlayersChoiceMessage/PlayersChoiceMessage.tsx";
 import { GameStage, Tie } from "../Game/Game.tsx";
-import StartGameMessage from "../StartGameMessage/StartGameMessage.tsx";
 import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
 import type { BettingOption } from "../../config/BettingOptions.ts";
+import StartGameMessage from "../StartGameMessage/StartGameMessage.tsx";
+import PlayersChoiceMessage from "../App/PlayersChoiceMessage/PlayersChoiceMessage.tsx";
 
 interface MessagePanelProps {
   computerChoice: BettingOption | null;
@@ -22,8 +22,8 @@ const MessagePanel = ({
 }: MessagePanelProps) => {
   return (
     <div className={styles.messagePanel}>
-      {gameStage === "start" && <StartGameMessage />}
-      {gameStage === "playing" && (
+      {gameStage === GameStage.START && <StartGameMessage />}
+      {gameStage === GameStage.PLAYING && (
         <PlayersChoiceMessage
           playerChoice={playerChoice}
           computerChoice={computerChoice}

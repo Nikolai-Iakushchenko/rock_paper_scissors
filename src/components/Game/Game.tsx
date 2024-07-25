@@ -11,7 +11,12 @@ import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 const PLAYING_DURATION = 3000;
 
 export type Tie = "tie";
-export type GameStage = "start" | "playing" | "finish";
+
+export enum GameStage {
+  START = "start",
+  PLAYING = "playing",
+  FINISH = "finish",
+}
 
 function playRockPaperScissors(
   choice1: BettingOption,
@@ -55,7 +60,7 @@ const Game = ({
   winSum,
   setSumOfBets,
 }: GameProps) => {
-  const [gameStage, setGameStage] = useState<GameStage>("start");
+  const [gameStage, setGameStage] = useState<GameStage>(GameStage.START);
   const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
     null,
   );
@@ -84,7 +89,7 @@ const Game = ({
   const playerWinSum = playerWiningBet * coefficient;
 
   const isBettingDoneButtonDisabled =
-    numberOfBets === 0 || gameStage === "playing";
+    numberOfBets === 0 || gameStage === GameStage.PLAYING;
 
   const sumOfBets = Object.values(bettingPositions).reduce((a, b) => a + b, 0);
 
@@ -97,7 +102,7 @@ const Game = ({
   }, [bettingPositions]);
 
   function runGameRound() {
-    setGameStage("playing");
+    setGameStage(GameStage.PLAYING);
 
     const computerMove = chooseRandomOption();
     const playerMove = chooseRandomOption();
@@ -107,7 +112,7 @@ const Game = ({
     setPlayersChoice(playerMove);
     setWinningOption(winningOption);
 
-    setTimeout(() => setGameStage("finish"), PLAYING_DURATION);
+    setTimeout(() => setGameStage(GameStage.FINISH), PLAYING_DURATION);
   }
 
   function resetGame() {
@@ -117,12 +122,12 @@ const Game = ({
 
     setPlayersBalance(playersBalance + winSum);
     setBettingPositions({});
-    setGameStage("start");
+    setGameStage(GameStage.START);
     setWinningOption(null);
   }
 
   const bettingDoneButtonHandler =
-    gameStage === "finish" ? resetGame : runGameRound;
+    gameStage === GameStage.FINISH ? resetGame : runGameRound;
 
   function chooseRandomOption(
     options: BettingOption[] = [
