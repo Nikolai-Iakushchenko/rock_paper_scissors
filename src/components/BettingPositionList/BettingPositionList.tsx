@@ -54,7 +54,7 @@ const BettingPositionList = ({
         <BettingPosition
           key={option.label}
           label={option.label}
-          winner={winningOption === option.label}
+          winner={winningOption === option.label && gameStage === "finish"}
           bet={bettingPositions[option.label] || 0}
           theme={option.theme}
           placeBet={gameStage === "start" ? placeBet : undefined}
