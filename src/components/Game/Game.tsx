@@ -9,7 +9,7 @@ import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
-const PLAYING_DURATION = 1000;
+const PLAYING_DURATION = 3000;
 
 // export type BettingOption = "rock" | "paper" | "scissors";
 // export enum BettingOption {
