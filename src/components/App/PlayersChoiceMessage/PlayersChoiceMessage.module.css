@@ -1,7 +1,8 @@
 .playersChoiceMessage {
   display: grid;
   align-content: center;
-  font-size: 2em;
+  /*font-size: 2em;*/
+  font-size: 3.5rem;
 }
 
 .preposition {

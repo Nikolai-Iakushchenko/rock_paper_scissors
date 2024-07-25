@@ -10,7 +10,7 @@ import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
 // todo update to 3000
-const PLAYING_DURATION = 1000;
+const PLAYING_DURATION = 100000000000;
 
 // export type BettingOption = "rock" | "paper" | "scissors";
 // export enum BettingOption {
