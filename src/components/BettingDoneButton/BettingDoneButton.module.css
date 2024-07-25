@@ -1,9 +1,11 @@
 .bettingDoneButton {
-  padding: 2em 5em;
-  border: 0.2em solid var(--golden);
   border-radius: 3em;
   color: var(--golden);
   background-color: var(--black);
+  /*padding: 2em 5em;*/
+  padding: 3vh 7vh;
+  font-size: 3.3vh;
+  border: 0.1em solid var(--golden);
 }
 
 .bettingDoneButton:disabled {

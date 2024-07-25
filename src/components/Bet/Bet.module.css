@@ -9,5 +9,6 @@
   border: 0.2em solid var(--blue);
   width: min-content;
   padding: 0.3rem;
-  font-size: 1.3rem;
+  /*font-size: 1.3rem;*/
+  font-size: 2.2vh;
 }
