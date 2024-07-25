@@ -7,5 +7,7 @@
 }
 
 .value {
+  display: inline-block;
+  width: 5rem;
   color: white;
 }
