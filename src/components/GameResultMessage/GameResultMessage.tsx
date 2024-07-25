@@ -9,10 +9,11 @@ interface GameResultMessageProps {
 
 const GameResultMessage = ({
   playerChoice,
-  winner,
+  winningOption,
   winSum,
 }: GameResultMessageProps) => {
-  const wonOptionMessage = winner === "tie" ? "Tie" : `${winner} won`;
+  const wonOptionMessage =
+    winningOption === "tie" ? "Tie" : `${winningOption} won`;
   const playerWonSumMessage =
     winSum > 0 ? (
       <>

@@ -142,6 +142,7 @@ const Game = ({
     setBettingPositions({});
 
     setGameStage("start");
+    setWinningOption(null);
 
     //   bets removed
   }
@@ -173,12 +174,13 @@ const Game = ({
     <main className={styles.game}>
       <MessagePanel
         winSum={winSum}
-        winner={winningOption}
+        winningOption={winningOption}
         gameStage={gameStage}
         playerChoice={playerChoice}
         computerChoice={computerChoice}
       ></MessagePanel>
       <BettingPositionList
+        winningOption={winningOption}
         gameStage={gameStage}
         bettingPositions={bettingPositions}
         setBettingPositions={setBettingPositions}
