@@ -1,6 +1,6 @@
 import styles from "./Game.module.css";
 import MessagePanel from "../MessagePanel/MessagePanel.tsx";
-import BettingPositionList from "../BettingPositions/BettingPositionList.tsx";
+import BettingPositionList from "../BettingPositionList/BettingPositionList.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
 import { useEffect, useState } from "react";
@@ -9,7 +9,8 @@ import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
-const PLAYING_DURATION = 3000;
+// todo update to 3000
+const PLAYING_DURATION = 1000;
 
 // export type BettingOption = "rock" | "paper" | "scissors";
 // export enum BettingOption {

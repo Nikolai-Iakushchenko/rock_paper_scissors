@@ -1,7 +1,7 @@
 import styles from "./BettingPosition.module.css";
 import cn from "classnames";
 import Bet from "../../Bet/Bet.tsx";
-import { BettingOption } from "../../BettingPositions/BettingPositionList.tsx";
+import { BettingOption } from "../../BettingPositionList/BettingPositionList.tsx";
 import { BettingOptionTheme } from "../../../config/BettingOptions.ts";
 // import { BETTING_POSITION_THEME } from "../../Game/Game.tsx";
 

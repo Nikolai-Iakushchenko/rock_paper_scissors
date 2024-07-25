@@ -1,13 +1,13 @@
 // import {
 //   BettingOption,
-//   BettingPositions,
+//   BettingPositionList,
 //   Tie,
 // } from "../components/Game/Game.tsx";
 //
 //
 //
 // export default function calculateReturn(
-//   playerBets: BettingPositions,
+//   playerBets: BettingPositionList,
 //   winningBet: BettingOption | Tie,
 //   playerChoice: BettingOption,
 // ) {

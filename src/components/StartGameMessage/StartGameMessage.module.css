@@ -1,4 +1,5 @@
 .startGameMessage {
   color: var(--golden);
   align-self: end;
+  font-size: 1.3rem;
 }
