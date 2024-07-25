@@ -7,13 +7,18 @@ const INITIAL_BALANCE = 5000;
 
 function App() {
   const [balance, setBalance] = useState(INITIAL_BALANCE);
-  // const [bet, setBet] = useState(0);
+  const [sumOfBets, setSumOfBets] = useState(0);
   const [winSum, setWinSum] = useState(0);
 
   return (
     <div className={styles.app}>
-      <InfoPanel playersBalance={balance} win={winSum} />
+      <InfoPanel
+        sumOfBets={sumOfBets}
+        playersBalance={balance}
+        winSum={winSum}
+      />
       <Game
+        setSumOfBets={setSumOfBets}
         winSum={winSum}
         setWin={setWinSum}
         playersBalance={balance}

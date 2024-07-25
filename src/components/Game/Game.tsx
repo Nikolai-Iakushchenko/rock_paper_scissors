@@ -52,6 +52,7 @@ interface GameProps {
   playersBalance: number;
   setWin: React.Dispatch<React.SetStateAction<number>>;
   winSum: number;
+  setSumOfBets: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Game = ({
@@ -59,6 +60,7 @@ const Game = ({
   playersBalance,
   setWin,
   winSum,
+  setSumOfBets,
 }: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>("start");
   const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
@@ -115,6 +117,10 @@ const Game = ({
   useEffect(() => {
     setWin(playerWinSum);
   }, [playerWinSum]);
+
+  useEffect(() => {
+    setSumOfBets(Object.values(bettingPositions).reduce((a, b) => a + b, 0));
+  }, [bettingPositions]);
 
   //   ===========================================================================
 
