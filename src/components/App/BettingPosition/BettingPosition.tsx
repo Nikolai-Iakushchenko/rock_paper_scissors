@@ -23,7 +23,6 @@ const BettingPosition = ({
     [styles.winner]: winner,
   });
 
-  // function handleClick(label: BettingPositionProps["label"]) {
   function handleClick(label: BettingOption) {
     if (typeof placeBet === "function") {
       placeBet(label);
@@ -31,7 +30,6 @@ const BettingPosition = ({
   }
 
   return (
-    // <div onClick={() => handleClick(label)} className={bettingPositionClass}>
     <div onClick={() => handleClick(label)} className={bettingPositionClass}>
       <div className={styles.betArea}>{bet !== 0 && <Bet bet={bet} />}</div>
       <div className={styles.label}>{label}</div>

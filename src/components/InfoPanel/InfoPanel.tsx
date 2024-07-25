@@ -1,5 +1,4 @@
 import styles from "./InfoPanel.module.css";
-// import type { ReactElement } from "react";
 import InfoItem from "../InfoItem/InfoItem.tsx";
 
 interface InfoPanelProps {

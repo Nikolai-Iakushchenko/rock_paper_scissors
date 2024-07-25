@@ -1,14 +1,6 @@
 import styles from "./BettingDoneButton.module.css";
 import { GameStage } from "../Game/Game.tsx";
 
-// function bettingOptionsMatch() {}
-//
-// function runGameRound() {
-//   //    run paper,scissors,rock match
-//   bettingOptionsMatch();
-//   //   compare computer vs player choice and find who won
-// }
-
 interface BettingDoneButtonProps {
   bettingDoneButtonHandler: () => void;
   gameStage: GameStage;

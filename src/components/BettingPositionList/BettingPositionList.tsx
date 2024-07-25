@@ -24,12 +24,12 @@ const BettingPositionList = ({
   winningOption,
 }: BettingPositionListProps) => {
   function placeBet(betOption: BettingOption) {
-    // player has less balance than available for bet
+    // Player has less balance than available for bet
     if (playersBalance - BET_AMOUNT < 0) {
       return;
     }
 
-    // Add new betting position
+    // Add bet on new position
     if (
       Object.keys(bettingPositions).length < MAX_NUMBER_OF_BETTING_POSITIONS &&
       !bettingPositions[betOption]

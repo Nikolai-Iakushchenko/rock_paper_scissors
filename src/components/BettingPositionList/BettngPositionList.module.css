@@ -2,7 +2,6 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  /*align-content: start;*/
   padding: 1em;
   grid-auto-flow: column;
   grid-column-gap: 3%;

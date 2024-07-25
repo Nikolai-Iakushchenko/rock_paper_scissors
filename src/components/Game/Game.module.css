@@ -1,8 +1,5 @@
 .game {
   display: grid;
-  /*grid-template-rows: 45% auto 30%;*/
-  /*grid-template-rows: 45% 10em 1fr;*/
-  /*grid-template-rows: 45% 20% 1fr;*/
   grid-template-rows: 1.5fr auto 1fr;;
   background-color: #404040;
   color: white;

@@ -10,13 +10,6 @@ import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
 const PLAYING_DURATION = 3000;
 
-// export type BettingOption = "rock" | "paper" | "scissors";
-// export enum BettingOption {
-//   ROCK = "rock",
-//   PAPER = "paper",
-//   SCISSORS = "scissors",
-// }
-
 export type Tie = "tie";
 export type GameStage = "start" | "playing" | "finish";
 
@@ -74,16 +67,6 @@ const Game = ({
     {} as BettingPositions,
   );
 
-  // let hasPlayerWonGame;
-  // let hasPlayerWonBet;
-  //
-  // let playerWiningBet: number;
-  // let coefficient;
-  // let numberOfBets;
-  //
-  // let isBettingDoneButtonDisabled;
-
-  //   ===========================================================================
   const hasPlayerBetOnWinningOption =
     playerChoice !== null && Object.hasOwn(bettingPositions, playerChoice);
 
@@ -91,10 +74,6 @@ const Game = ({
     playerChoice !== null && winningOption === playerChoice;
 
   const hasPlayerWonBet = hasPlayerWonGame && hasPlayerBetOnWinningOption;
-
-  // console.log("bettingPositions", bettingPositions);
-  // console.log("winningOption", winningOption);
-  // console.log("hasPlayerWonBet", hasPlayerWonBet);
 
   const playerWiningBet =
     hasPlayerWonBet && playerChoice && bettingPositions[playerChoice]
@@ -109,12 +88,6 @@ const Game = ({
 
   const sumOfBets = Object.values(bettingPositions).reduce((a, b) => a + b, 0);
 
-  // debugger;
-
-  // console.log("playerChoice", playerChoice);
-  // console.log("coefficient", coefficient);
-  // console.log("playerWiningBet", playerWiningBet);
-
   useEffect(() => {
     setWin(playerWinSum);
   }, [playerWinSum]);
@@ -123,17 +96,12 @@ const Game = ({
     setSumOfBets(sumOfBets);
   }, [bettingPositions]);
 
-  //   ===========================================================================
-
   function runGameRound() {
     setGameStage("playing");
 
-    //    run paper,scissors,rock match
     const computerMove = chooseRandomOption();
     const playerMove = chooseRandomOption();
     const winningOption = playRockPaperScissors(computerMove, playerMove);
-
-    //   compare computer vs player choice and find who won
 
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
@@ -147,7 +115,6 @@ const Game = ({
       winSum = calculateTieReturn(numberOfBets, sumOfBets);
     }
 
-    //the return adds to the balance
     setPlayersBalance(playersBalance + winSum);
     setBettingPositions({});
     setGameStage("start");
@@ -166,16 +133,6 @@ const Game = ({
   ): BettingOption {
     return options[Math.floor(Math.random() * options.length)];
   }
-
-  // function playersChoicesMatch() {
-  //   const computerMove = chooseRandomOption();
-  //   const playerMove = chooseRandomOption();
-  //   const winningOption = playRockPaperScissors(computerMove, playerMove);
-  //
-  //   setComputerChoice(computerMove);
-  //   setPlayersChoice(playerMove);
-  //   setWinningOption(winningOption);
-  // }
 
   return (
     <main className={styles.game}>

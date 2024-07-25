@@ -1,5 +1,4 @@
 import styles from "./MessagePanel.module.css";
-// import GameResultMessage from "../GameResultMessage/GameResultMessage.tsx";
 import PlayersChoiceMessage from "../App/PlayersChoiceMessage/PlayersChoiceMessage.tsx";
 import { GameStage, Tie } from "../Game/Game.tsx";
 import StartGameMessage from "../StartGameMessage/StartGameMessage.tsx";

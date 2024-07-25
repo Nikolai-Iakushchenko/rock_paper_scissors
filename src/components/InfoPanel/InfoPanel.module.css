@@ -3,11 +3,9 @@
   grid-auto-flow: column;
   justify-content: center;
   align-items: center;
-  /*gap: 3.5em;*/
   gap: 2rem;
   background-color: black;
   color: white;
-  /*padding-block: 0.5em;*/
   padding-block: 0.3em;
   font-size: 1.3rem;
   font-weight: normal;

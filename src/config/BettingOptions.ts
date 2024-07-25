@@ -1,6 +1,3 @@
-// import { BettingOption } from "../components/Game/Game.tsx";
-// import { BettingOptionTheme } from "../components/App/BettingPosition/BettingPosition.tsx";
-
 export enum BettingOption {
   ROCK = "rock",
   PAPER = "paper",
