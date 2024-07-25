@@ -167,6 +167,7 @@ const Game = ({
         computerChoice={computerChoice}
       ></MessagePanel>
       <BettingPositionList
+        gameStage={gameStage}
         bettingPositions={bettingPositions}
         setBettingPositions={setBettingPositions}
         playersBalance={playersBalance}
