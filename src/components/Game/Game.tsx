@@ -18,9 +18,9 @@ function playRockPaperScissors(
   choice2: BettingOption,
 ): BettingOption | Tie {
   const comparison = {
-    rock: { weakTo: "paper", strongTo: "scissors" },
-    paper: { weakTo: "scissors", strongTo: "rock" },
-    scissors: { weakTo: "rock", strongTo: "paper" },
+    rock: { weakTo: BettingOption.PAPER, strongTo: BettingOption.SCISSORS },
+    paper: { weakTo: BettingOption.SCISSORS, strongTo: BettingOption.ROCK },
+    scissors: { weakTo: BettingOption.ROCK, strongTo: BettingOption.PAPER },
   };
 
   if (comparison[choice1].strongTo === choice2) {
