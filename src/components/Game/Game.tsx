@@ -147,6 +147,7 @@ const Game = ({
   return (
     <main className={styles.game}>
       <MessagePanel
+        hasPlayerWonBet={hasPlayerWonBet}
         winSum={winSum}
         winningOption={winningOption}
         gameStage={gameStage}

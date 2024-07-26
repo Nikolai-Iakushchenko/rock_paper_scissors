@@ -11,6 +11,7 @@ interface MessagePanelProps {
   gameStage: GameStage;
   winningOption: BettingOption | Tie | null;
   winSum: number;
+  hasPlayerWonBet: boolean;
 }
 
 const MessagePanel = ({
@@ -19,6 +20,7 @@ const MessagePanel = ({
   playerChoice,
   gameStage,
   winningOption,
+  hasPlayerWonBet,
 }: MessagePanelProps) => {
   return (
     <div className={styles.messagePanel}>
@@ -31,6 +33,7 @@ const MessagePanel = ({
       )}
       {gameStage === "finish" && (
         <GameResultMessage
+          hasPlayerWonBet={hasPlayerWonBet}
           winSum={winSum}
           playerChoice={playerChoice}
           winningOption={winningOption}

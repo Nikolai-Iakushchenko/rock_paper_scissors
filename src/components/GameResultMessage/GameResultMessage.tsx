@@ -6,22 +6,23 @@ interface GameResultMessageProps {
   winningOption: BettingOption | Tie | null;
   playerChoice: BettingOption | null;
   winSum: number;
+  hasPlayerWonBet: boolean;
 }
 
 const GameResultMessage = ({
   winningOption,
   winSum,
+  hasPlayerWonBet,
 }: GameResultMessageProps) => {
   const wonOptionMessage =
     winningOption === "tie" ? "Tie" : `${winningOption} won`;
-  const playerWonSumMessage =
-    winSum > 0 ? (
-      <>
-        <span className={styles.winText}>you win</span> {winSum}
-      </>
-    ) : (
-      "Better luck next time"
-    );
+  const playerWonSumMessage = hasPlayerWonBet ? (
+    <>
+      <span className={styles.winText}>you win</span> {winSum}
+    </>
+  ) : (
+    "Better luck next time"
+  );
 
   return (
     <div className={styles.gameResultMessage}>
