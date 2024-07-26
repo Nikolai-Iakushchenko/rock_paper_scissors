@@ -20,7 +20,7 @@ function App() {
       <Game
         setSumOfBets={setSumOfBets}
         winSum={winSum}
-        setWin={setWinSum}
+        setWinSum={setWinSum}
         playersBalance={balance}
         setPlayersBalance={setBalance}
       />

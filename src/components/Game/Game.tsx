@@ -48,7 +48,7 @@ export type BettingPositions = {
 interface GameProps {
   setPlayersBalance: React.Dispatch<React.SetStateAction<number>>;
   playersBalance: number;
-  setWin: React.Dispatch<React.SetStateAction<number>>;
+  setWinSum: React.Dispatch<React.SetStateAction<number>>;
   winSum: number;
   setSumOfBets: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -56,7 +56,7 @@ interface GameProps {
 const Game = ({
   setPlayersBalance,
   playersBalance,
-  setWin,
+  setWinSum,
   winSum,
   setSumOfBets,
 }: GameProps) => {
@@ -94,9 +94,7 @@ const Game = ({
   const sumOfBets = Object.values(bettingPositions).reduce((a, b) => a + b, 0);
 
   useEffect(() => {
-    if (gameStage !== GameStage.PLAYING) {
-      setWin(playerWinSum);
-    }
+    setWinSum(playerWinSum);
   }, [gameStage, playerWinSum]);
 
   useEffect(() => {
@@ -112,9 +110,11 @@ const Game = ({
 
     setComputerChoice(computerMove);
     setPlayersChoice(playerMove);
-    setWinningOption(winningOption);
 
-    setTimeout(() => setGameStage(GameStage.FINISH), PLAYING_DURATION);
+    setTimeout(() => {
+      setWinningOption(winningOption);
+      setGameStage(GameStage.FINISH);
+    }, PLAYING_DURATION);
   }
 
   function resetGame() {
