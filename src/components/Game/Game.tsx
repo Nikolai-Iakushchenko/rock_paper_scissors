@@ -117,8 +117,6 @@ const Game = ({
     setTimeout(() => {
       setWinningOption(winningOption);
       setGameStage(GameStage.FINISH);
-
-      // setWinSum(playerWinSum);
     }, PLAYING_DURATION);
   }
 

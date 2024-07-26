@@ -1,10 +1,3 @@
-# TODO
-
-1. move balance update after timeout
-2. move app's state updates to event handlers
-3. verify box highlighting works as expected
-4. align BettingDoneButton
-
 # Test task specification:
 
 Your test task is to create a React app, using Typescript with strict typing.
