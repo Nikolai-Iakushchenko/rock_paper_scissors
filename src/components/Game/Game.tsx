@@ -8,8 +8,7 @@ import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
-// todo set to 3000
-const PLAYING_DURATION = 1000;
+const PLAYING_DURATION = 3000;
 
 export type Tie = "tie";
 
