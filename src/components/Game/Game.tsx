@@ -153,21 +153,23 @@ const Game = ({
         playerChoice={playerChoice}
         computerChoice={computerChoice}
       ></MessagePanel>
-      <BettingPositionList
-        playerChoice={playerChoice}
-        gameStage={gameStage}
-        bettingPositions={bettingPositions}
-        setBettingPositions={setBettingPositions}
-        playersBalance={playersBalance}
-        setPlayersBalance={setPlayersBalance}
-      ></BettingPositionList>
-      <ControlPanel>
-        <BettingDoneButton
+      <div className={styles.bottomGrid}>
+        <BettingPositionList
+          playerChoice={playerChoice}
           gameStage={gameStage}
-          bettingDoneButtonHandler={bettingDoneButtonHandler}
-          isBettingDoneButtonDisabled={isBettingDoneButtonDisabled}
-        />
-      </ControlPanel>
+          bettingPositions={bettingPositions}
+          setBettingPositions={setBettingPositions}
+          playersBalance={playersBalance}
+          setPlayersBalance={setPlayersBalance}
+        ></BettingPositionList>
+        <ControlPanel>
+          <BettingDoneButton
+            gameStage={gameStage}
+            bettingDoneButtonHandler={bettingDoneButtonHandler}
+            isBettingDoneButtonDisabled={isBettingDoneButtonDisabled}
+          />
+        </ControlPanel>
+      </div>
     </main>
   );
 };

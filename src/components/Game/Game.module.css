@@ -1,6 +1,13 @@
 .game {
   display: grid;
-  grid-template-rows: 1.5fr auto 1fr;;
+  grid-template-rows: 40% 60%;
   background-color: #404040;
   color: white;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 3%;
+  justify-content: center;
 }

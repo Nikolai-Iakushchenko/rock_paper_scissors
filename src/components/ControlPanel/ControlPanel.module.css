@@ -1,6 +1,8 @@
 .controlPanel {
   display: grid;
+  grid-column: span 3;
+  grid-template-columns: subgrid;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 1rem;
 }

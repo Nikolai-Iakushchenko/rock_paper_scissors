@@ -1,10 +1,9 @@
 .bettingPositionList {
   display: grid;
   justify-content: center;
-  align-items: center;
   padding: 1em;
-  grid-auto-flow: column;
-  grid-column-gap: 3%;
+  grid-column: span 3;
+  grid-template-columns: subgrid;
 }
 
 .bettingPositionContainer {
