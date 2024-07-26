@@ -27,7 +27,7 @@
   color: var(--light-red);
 }
 
-.winner {
+.highlighted {
   outline: 0.3rem solid;
 }
 

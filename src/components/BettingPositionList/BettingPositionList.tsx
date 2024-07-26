@@ -1,6 +1,6 @@
 import styles from "./BettngPositionList.module.css";
 import BettingPosition from "../App/BettingPosition/BettingPosition.tsx";
-import { BettingPositions, GameStage, Tie } from "../Game/Game.tsx";
+import { BettingPositions, GameStage } from "../Game/Game.tsx";
 import BettingOptions, { BettingOption } from "../../config/BettingOptions.ts";
 
 const MAX_NUMBER_OF_BETTING_POSITIONS = 2;
@@ -12,7 +12,7 @@ interface BettingPositionListProps {
   bettingPositions: BettingPositions;
   setBettingPositions: React.Dispatch<React.SetStateAction<BettingPositions>>;
   gameStage: GameStage;
-  winningOption: BettingOption | Tie | null;
+  playerChoice: BettingOption | null;
 }
 
 const BettingPositionList = ({
@@ -21,7 +21,7 @@ const BettingPositionList = ({
   bettingPositions,
   setBettingPositions,
   gameStage,
-  winningOption,
+  playerChoice,
 }: BettingPositionListProps) => {
   function placeBet(betOption: BettingOption) {
     // Player has less balance than available for bet
@@ -54,7 +54,9 @@ const BettingPositionList = ({
         <BettingPosition
           key={option.label}
           label={option.label}
-          winner={winningOption === option.label && gameStage === "finish"}
+          isPlayerChoice={
+            playerChoice === option.label && gameStage === "finish"
+          }
           bet={bettingPositions[option.label] || 0}
           theme={option.theme}
           placeBet={gameStage === GameStage.START ? placeBet : undefined}

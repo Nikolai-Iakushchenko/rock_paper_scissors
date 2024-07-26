@@ -8,7 +8,8 @@ import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
 import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
-const PLAYING_DURATION = 3000;
+// todo set to 3000
+const PLAYING_DURATION = 1000;
 
 export type Tie = "tie";
 
@@ -79,6 +80,8 @@ const Game = ({
     playerChoice !== null && winningOption === playerChoice;
 
   const hasPlayerWonBet = hasPlayerWonGame && hasPlayerBetOnWinningOption;
+  console.log("hasPlayerWonGame", hasPlayerWonGame);
+  console.log("hasPlayerWonBet", hasPlayerWonBet);
 
   const playerWiningBet =
     hasPlayerWonBet && playerChoice && bettingPositions[playerChoice]
@@ -114,6 +117,8 @@ const Game = ({
     setTimeout(() => {
       setWinningOption(winningOption);
       setGameStage(GameStage.FINISH);
+
+      // setWinSum(playerWinSum);
     }, PLAYING_DURATION);
   }
 
@@ -151,7 +156,7 @@ const Game = ({
         computerChoice={computerChoice}
       ></MessagePanel>
       <BettingPositionList
-        winningOption={winningOption}
+        playerChoice={playerChoice}
         gameStage={gameStage}
         bettingPositions={bettingPositions}
         setBettingPositions={setBettingPositions}

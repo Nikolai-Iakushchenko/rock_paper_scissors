@@ -6,7 +6,7 @@ import { BettingOptionTheme } from "../../../config/BettingOptions.ts";
 
 interface BettingPositionProps {
   label: BettingOption;
-  winner: boolean;
+  isPlayerChoice: boolean;
   bet: number;
   theme: BettingOptionTheme;
   placeBet: ((label: BettingPositionProps["label"]) => void) | undefined;
@@ -15,12 +15,12 @@ interface BettingPositionProps {
 const BettingPosition = ({
   label,
   theme = BettingOptionTheme.BLUE,
-  winner = false,
+  isPlayerChoice = false,
   bet = 0,
   placeBet,
 }: BettingPositionProps) => {
   const bettingPositionClass = cn(styles.bettingPosition, styles[theme], {
-    [styles.winner]: winner,
+    [styles.highlighted]: isPlayerChoice,
   });
 
   function handleClick(label: BettingOption) {
