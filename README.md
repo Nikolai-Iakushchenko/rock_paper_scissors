@@ -58,3 +58,11 @@ We pay attention to everything mentioned for middle. Additionally we expect code
 to be flexible and maintainable. Changing of requirements should not lead to
 rewriting half of application. Changing of specifications should cause minimal
 changes.
+
+![rock_paper_scissors_1](/src/assets/rock_paper_scissors_1.png "rock_paper_scissors_1")
+
+![rock_paper_scissors_2](/src/assets/rock_paper_scissors_1.png
+"rock_paper_scissors_2")
+
+![rock_paper_scissors_3](/src/assets/rock_paper_scissors_1.png
+"rock_paper_scissors_3")
