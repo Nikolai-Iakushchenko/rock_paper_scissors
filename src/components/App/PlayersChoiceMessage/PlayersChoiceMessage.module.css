@@ -1,11 +1,17 @@
 .playersChoiceMessage {
   display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-content: center;
+  align-items: baseline;
   font-size: 3.5rem;
 }
 
 .preposition {
   color: var(--golden);
   font-size: 0.7em;
-  margin-inline: 1.5em;
+  margin-inline: 6rem;
+}
+
+.computerChoice {
+  text-align: end;
 }

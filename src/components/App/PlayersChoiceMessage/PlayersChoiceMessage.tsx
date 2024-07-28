@@ -12,10 +12,9 @@ const PlayersChoiceMessage = ({
 }: PlayersChoiceMessageProps) => {
   return (
     <div className={styles.playersChoiceMessage}>
-      <p>
-        {computerChoice} <span className={styles.preposition}>vs</span>{" "}
-        {playerChoice}
-      </p>
+      <div className={styles.computerChoice}>{computerChoice}</div>
+      <div className={styles.preposition}>vs</div>
+      <div className={styles.playerChoice}>{playerChoice}</div>
     </div>
   );
 };
