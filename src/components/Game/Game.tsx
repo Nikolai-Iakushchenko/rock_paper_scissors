@@ -1,12 +1,11 @@
 import styles from "./Game.module.css";
 import MessagePanel from "../MessagePanel/MessagePanel.tsx";
-import BettingPositionList
-  from "../BettingPositionList/BettingPositionList.tsx";
+import BettingPositionList from "../BettingPositionList/BettingPositionList.tsx";
 import ControlPanel from "../ControlPanel/ControlPanel.tsx";
 import BettingDoneButton from "../BettingDoneButton/BettingDoneButton.tsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import calculateCoefficient from "../../utils/CalculateCoefficient.ts";
-import {BettingOption} from "../../config/BettingOptions.ts";
+import { BettingOption } from "../../config/BettingOptions.ts";
 import calculateTieReturn from "../../utils/CalculateTieReturn.ts";
 
 const PLAYING_DURATION = 3000;
@@ -24,9 +23,9 @@ function playRockPaperScissors(
   choice2: BettingOption,
 ): BettingOption | Tie {
   const comparison = {
-    rock: {weakTo: BettingOption.PAPER, strongTo: BettingOption.SCISSORS},
-    paper: {weakTo: BettingOption.SCISSORS, strongTo: BettingOption.ROCK},
-    scissors: {weakTo: BettingOption.ROCK, strongTo: BettingOption.PAPER},
+    rock: { weakTo: BettingOption.PAPER, strongTo: BettingOption.SCISSORS },
+    paper: { weakTo: BettingOption.SCISSORS, strongTo: BettingOption.ROCK },
+    scissors: { weakTo: BettingOption.ROCK, strongTo: BettingOption.PAPER },
   };
 
   if (comparison[choice1].strongTo === choice2) {
@@ -55,12 +54,12 @@ interface GameProps {
 }
 
 const Game = ({
-                setPlayersBalance,
-                playersBalance,
-                setWinSum,
-                winSum,
-                setSumOfBets,
-              }: GameProps) => {
+  setPlayersBalance,
+  playersBalance,
+  setWinSum,
+  winSum,
+  setSumOfBets,
+}: GameProps) => {
   const [gameStage, setGameStage] = useState<GameStage>(GameStage.START);
   const [computerChoice, setComputerChoice] = useState<BettingOption | null>(
     null,

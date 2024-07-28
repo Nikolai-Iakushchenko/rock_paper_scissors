@@ -55,7 +55,7 @@ const BettingPositionList = ({
           key={option.label}
           label={option.label}
           isPlayerChoice={
-            playerChoice === option.label && gameStage === "finish"
+            playerChoice === option.label && gameStage === GameStage.FINISH
           }
           bet={bettingPositions[option.label] || 0}
           theme={option.theme}
