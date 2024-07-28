@@ -61,8 +61,8 @@ changes.
 
 ![rock_paper_scissors_1](/src/assets/rock_paper_scissors_1.png "rock_paper_scissors_1")
 
-![rock_paper_scissors_2](/src/assets/rock_paper_scissors_1.png
+![rock_paper_scissors_2](/src/assets/rock_paper_scissors_2.png
 "rock_paper_scissors_2")
 
-![rock_paper_scissors_3](/src/assets/rock_paper_scissors_1.png
+![rock_paper_scissors_3](/src/assets/rock_paper_scissors_3.png
 "rock_paper_scissors_3")
