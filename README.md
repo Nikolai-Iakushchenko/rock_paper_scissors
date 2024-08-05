@@ -1,6 +1,5 @@
 # Test task specification:
 
-Your test task is to create a React app, using Typescript with strict typing.
 The app is a scissors, rock, paper game, with the ability to bet on the winning
 position.
 
@@ -33,31 +32,8 @@ position.
 - After round ends the return adds to the balance
 - Player cannot bet if player has less balance than available for bet.
 
-NB please keep in mind that Title ROCK vs PAPER on the second screen means
+Title ROCK vs PAPER on the second screen means
 “computer choice ROCK versus player choice PAPER” — not ROCK bet vs PAPER bet.
-
-## Acceptance criteria
-
-Every point of task should be implemented
-
-### Junior level
-
-In general implementing every point is enough for junior. Optionally we pay
-attention to such things as concistency, variable naming, files and folders
-structure.
-
-### Middle level
-
-We pay attention to everything mentioned for Junior (optional part is mandatory
-for middle). Additionally we check UX and compare UI with mockups more thorough
-and we expect following clean code principles
-
-### Senior level
-
-We pay attention to everything mentioned for middle. Additionally we expect code
-to be flexible and maintainable. Changing of requirements should not lead to
-rewriting half of application. Changing of specifications should cause minimal
-changes.
 
 ![rock_paper_scissors_1](/src/assets/rock_paper_scissors_1.png "rock_paper_scissors_1")
 
