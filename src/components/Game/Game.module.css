@@ -1,7 +1,7 @@
 .game {
   display: grid;
   grid-template-rows: 40% 60%;
-  background-color: #404040;
+  background: linear-gradient(#464646, #1E1E1E);
   color: white;
 }
 
